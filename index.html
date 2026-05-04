@@ -1,792 +1,643 @@
 <!doctype html>
-<html>
-
+<html lang="en">
 <head>
   <title>Yaxuan (Shelly) Yin</title>
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/menu.js"></script>
   <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-103598896-1', 'auto');
-    ga('send', 'pageview');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create','UA-103598896-1','auto');
+    ga('send','pageview');
   </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1a1a;
+      background: #fafaf8;
+      line-height: 1.7;
+    }
+
+    /* Profile header */
+    .profile-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 36px 0 28px;
+      border-bottom: 1px solid #e8e6e0;
+      margin-bottom: 36px;
+    }
+    .profile-photo {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    }
+    .profile-info { flex: 1; }
+    .profile-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 4px;
+      line-height: 1.2;
+      color: #111;
+    }
+    .name-clickable {
+      cursor: pointer;
+      border-bottom: 2px dashed #c5bfb0;
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+    .name-clickable:hover { border-color: #888; }
+
+    #pronunciation-popup {
+      display: none;
+      margin: 8px 0 12px;
+      padding: 9px 16px;
+      background: #fff;
+      border: 1px solid #e0ddd5;
+      border-left: 3px solid #7a9e7e;
+      border-radius: 6px;
+      font-size: 13.5px;
+      color: #444;
+      max-width: fit-content;
+      animation: slideDown 0.18s ease;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .pron-close {
+      margin-left: 12px;
+      cursor: pointer;
+      color: #bbb;
+      font-size: 12px;
+      transition: color 0.15s;
+    }
+    .pron-close:hover { color: #666; }
+
+    .profile-meta {
+      font-size: 14px;
+      color: #555;
+      margin: 6px 0 12px;
+      line-height: 1.8;
+    }
+    .profile-meta a { color: #555; }
+
+    .social-links { display: flex; gap: 10px; align-items: center; }
+    .social-links a img {
+      width: 22px;
+      height: 22px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .social-links a img:hover { opacity: 1; }
+
+    /* Section headings */
+    .section-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #111;
+      margin: 40px 0 6px;
+      letter-spacing: 0.01em;
+    }
+    .section-divider {
+      border: none;
+      border-top: 1.5px solid #e8e6e0;
+      margin: 0 0 20px;
+    }
+
+    /* Bio */
+    .bio-text {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.8;
+      max-width: 720px;
+      margin-bottom: 14px;
+    }
+    .bio-text a { color: #4a7c59; text-decoration: none; border-bottom: 1px solid #b5d4be; transition: border-color 0.2s; }
+    .bio-text a:hover { border-color: #4a7c59; }
+
+    /* News */
+    .news-item {
+      display: flex;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0ede6;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.65;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-date {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #fff;
+      background: #4a7c59;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      height: fit-content;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .news-item a { color: #4a7c59; }
+    #toggle-news-btn {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #888;
+      font-style: italic;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      font-family: inherit;
+    }
+    #toggle-news-btn:hover { color: #444; }
+
+    /* Publication filter */
+    .pub-filter-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .pub-filter {
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      border: 1.5px solid #d0cdc5;
+      background: transparent;
+      color: #555;
+    }
+    .pub-filter:hover { border-color: #888; color: #222; }
+    .pub-filter.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+    .pub-filter.active.dks-btn { background: #2c5f8a; border-color: #2c5f8a; }
+    .pub-filter.active.rai-btn { background: #4a7c59; border-color: #4a7c59; }
+
+    /* Publication cards */
+    #pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pub-item {
+      background: #fff;
+      border: 1px solid #e8e6e0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      transition: box-shadow 0.2s;
+    }
+    .pub-item:hover { box-shadow: 0 3px 16px rgba(0,0,0,0.07); }
+    .pub-item.hidden { display: none; }
+
+    .pub-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .pub-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #111;
+      line-height: 1.55;
+      flex: 1;
+    }
+    .cat-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 100px;
+      white-space: nowrap;
+      font-weight: 500;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cat-tag.dks { background: #deeaf5; color: #1e5480; border: 1px solid #b8d3ea; }
+    .cat-tag.rai { background: #dff0e4; color: #2d6640; border: 1px solid #b2d8bc; }
+
+    .pub-authors { font-size: 13px; color: #555; margin: 3px 0; }
+    .pub-venue { font-size: 12.5px; color: #888; font-style: italic; margin: 2px 0 8px; }
+    .pub-award {
+      display: inline-block;
+      font-size: 11.5px;
+      background: #fff8e1;
+      color: #8a6500;
+      border: 1px solid #f0dc8a;
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 7px;
+    }
+    .pub-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      padding: 4px 11px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.15s;
+      border: 1px solid;
+    }
+    .pub-link.source { color: #2c5f8a; border-color: #b3cfea; background: #f0f6fc; }
+    .pub-link.source:hover { background: #ddeaf7; border-color: #2c5f8a; }
+    .pub-link.pdf { color: #c0392b; border-color: #f0b8b3; background: #fdf3f2; }
+    .pub-link.pdf:hover { background: #fde0dc; border-color: #c0392b; }
+    .pub-link.soon { color: #aaa; border-color: #e0e0e0; background: #f8f8f8; cursor: default; font-style: italic; }
+
+    /* Poster list */
+    .poster-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .poster-item {
+      background: #fff;
+      border: 1px solid #e8e6e0;
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+
+    /* Awards */
+    .award-list { list-style: none; padding: 0; margin: 0; }
+    .award-item {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      font-size: 14px;
+      color: #333;
+      border-bottom: 1px solid #f0ede6;
+    }
+    .award-item:last-child { border-bottom: none; }
+    .award-year {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #fff;
+      background: #888;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      height: fit-content;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .award-item a { color: #333; text-decoration: none; border-bottom: 1px dotted #aaa; }
+    .award-item a:hover { border-bottom-color: #333; }
+
+    @media (max-width: 600px) {
+      .profile-header { flex-direction: column; }
+      .profile-photo { width: 100px; height: 100px; }
+      .pub-card-top { flex-direction: column; gap: 6px; }
+    }
+  </style>
 </head>
 
 <body>
   <div class="menu-container"></div>
   <div class="content-container">
     <div class="content">
-      <!-- <div class="content-table flex-column">
+      <div class="content-table flex-column">
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+          <img class="profile-photo" src="img/7741771957873_.pic.jpg" alt="Yaxuan Yin">
+          <div class="profile-info">
+            <h1 class="profile-name">
+              <span class="name-clickable" id="name-trigger" onclick="togglePronunciation()" title="Click to see pronunciation">Yaxuan (Shelly) Yin</span>
+            </h1>
+            <div id="pronunciation-popup">
+              🔊 <strong style="color:#222;">Yah-shwen</strong> &nbsp;<span style="color:#999; font-size:12px;">/jɑ.ɕɥɛn/</span>&nbsp; · or just call me <strong style="color:#222;">Shelly</strong>
+              <span class="pron-close" onclick="togglePronunciation()">✕</span>
+            </div>
+            <div class="profile-meta">
+              PhD Candidate &nbsp;·&nbsp; Information Science<br>
+              University of Wisconsin–Madison<br>
+              <a href="mailto:yaxuan.yin@wisc.edu">yaxuan.yin@wisc.edu</a>
+            </div>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/yaxuanyin/" target="_blank"><img src="img/linkedin_icon.png" alt="LinkedIn"></a>
+              <a href="https://scholar.google.com/citations?user=cOy7544AAAAJ&hl=en" target="_blank"><img src="img/google_scholar_icon.png" alt="Google Scholar"></a>
+              <a href="https://x.com/Yaxuan_Yin" target="_blank"><img src="img/twitter_icon.jpg" alt="X / Twitter"></a>
+            </div>
+          </div>
+        </div>
+
         <div class="flex-row">
           <div class="flex-item flex-column">
-            <img class="image" id="me" src="img/me.jpg">
-          </div> -->
-          <div class="content-table flex-column">
-            <div class="flex-row">
-              <div class="flex-item flex-column">
-                <img class="image" id="me" src="img/7741771957873_.pic.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 5px;">
+
+            <!-- Biography -->
+            <h2 class="section-heading">Biography</h2>
+            <hr class="section-divider">
+            <p class="bio-text">👋 Hi, I'm Yaxuan (Shelly). I am a Ph.D. candidate in Information Science at the University of Wisconsin–Madison, where I work with the <a href="https://collab.ischool.wisc.edu/" target="_blank">Collaborative Computing Group (MadCollab)</a> under the guidance of <a href="https://ischool.wisc.edu/staff/thebault-spieker-jacob/" target="_blank">Dr. Jacob Thebault-Spieker</a>.</p>
+            <p class="bio-text">My research examines how human-generated data and the infrastructures that shape its production interact to reinforce, and in some cases reshape, existing knowledge gaps and contribution inequalities. My forward-looking research agenda centers on (1) making the value of individual contributions visible through the lens of large language models, (2) empowering contributors to leverage that value, and (3) helping communities critically engage with how platforms like Wikipedia are being transformed in the LLM era and how to foster healthier, more equitable contribution ecosystems.</p>
+            <p class="bio-text">In collaboration with <a href="https://shamya.github.io/" target="_blank">Dr. Shamya Karumbaiah</a> at the Responsible AI for Learning (TRAIL) Lab, I also pursue a parallel research thread on Responsible AI in Education. This work (1) contextualizes how educators perceive and navigate bias and fairness challenges in real-world tasks, and (2) develops tools that support educators in identifying and auditing AI behavior, with the goal of informing the design of more responsible AI systems.</p>
+            <p class="bio-text">Prior to my Ph.D., I earned a Master's degree in Urban Data Science from New York University.</p>
+
+            <!-- News -->
+            <h2 class="section-heading">News</h2>
+            <hr class="section-divider">
+            <div id="recent-news">
+              <div class="news-item">
+                <span class="news-date">Apr 2026</span>
+                <span>Our paper "Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia" has been accepted to #CHI2026! ¡Nos vemos en Barcelona! 🇪🇸</span>
               </div>
-          <div class="flex-item flex-column">
-            <h2>Yaxuan (Shelly) Yin</h2>
-            <p class="text">
-              PhD Candidate <br>
-              University of Wisconsin-Madison in Information Science <br>
-              yaxuan.yin@ wisc.edu<br>
-              <!-- <a href="https://ivi.uva.nl" target="_blank">Informatics Institute</a><br>
-              <a href="https://www.uva.nl/en" target="_blank">University of Amsterdam</a>, The Netherlands<br> -->
-            </p>
-            <p>
-              <a href="https://www.linkedin.com/in/yaxuanyin/" target="_blank">
-                <img src="img/linkedin_icon.png" alt="LinkedIn" style="width: 24px; height: 24px; margin-right: 10px;">
-              </a>
-              <a href="https://scholar.google.com/citations?user=cOy7544AAAAJ&hl=en" target="_blank">
-                <img src="img/google_scholar_icon.png" alt="Google Scholar" style="width: 24px; height: 24px;; margin-right: 10px;">
-              </a>
-              <a href="https://x.com/Yaxuan_Yin" target="_blank">
-                <img src="img/twitter_icon.jpg" alt="X" style="width: 24px; height: 24px;">
-              </a>
-            </p>
-          </div>
-        </div>
-        
-        <div class="flex-row">
-          <div class="flex-item flex-column">
-            <h2>Biography</h2>
-            <hr>
-            <p class="text">
-              👋 Hi, I'm Yaxuan (Shelly)
+              <div class="news-item">
+                <span class="news-date">Apr 2025</span>
+                <span>Our paper "Responsible AI in Education: Understanding Teachers' Priorities and Contextual Challenges" has been accepted to #FAccT2025! Honored to contribute to the growing dialogue on values, context, and ethics in AI.</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">Apr 2025</span>
+                <span>Our paper "AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education" has been accepted to #AIED2025!</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">Mar 2025</span>
+                <span>Our <a href="paper/CSCL25_RAI.pdf" target="_blank">paper</a> "Toward Teacher‐Centered AI Design" has been accepted for #CSCL2025. Huge thanks to my amazing and supportive collaborators!</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">Oct 2024</span>
+                <span>Attending CSCW2024 to present our <a href="paper/CSCW24_productivity_vs_equity.pdf" target="_blank">paper</a> and <a href="paper/CSCW24_Reddit.pdf" target="_blank">extended abstract</a>! See you in San José, Costa Rica 🦜</span>
+              </div>
+            </div>
+            <button id="toggle-news-btn" onclick="toggleNews()">View past news</button>
+            <div id="old-news" style="display:none; margin-top:6px;">
+              <div class="news-item">
+                <span class="news-date">Sep 2024</span>
+                <span>Starting the <a href="https://univercity.wisc.edu/2024/09/23/univercity-alliance-celebrates-partnerships-across-wisconsin/" target="_blank">UniverCity Alliance project</a> with Iowa County and the Southwestern Wisconsin Regional Planning Commission.</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">Sep 2024</span>
+                <span>Two full papers accepted to CSCW2025, both as first author! Excited to present in Bergen, Norway 🇳🇴</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">Sep 2023</span>
+                <span>Started my third year as discussion section instructor for LIS 461: Data and Algorithms – Ethics and Policy.</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">Nov 2023</span>
+                <span>My first-ever paper—and first as first author—accepted to CSCW2024 after a long revision journey! 🎉 Huge thanks to my amazing mentee @Longjie and my great advisor.</span>
+              </div>
+            </div>
 
-            <p style="display: inline-flex; align-items: center; gap: 8px; background: #f5f5f3; border: 0.5px solid #ddd; border-radius: 10px; padding: 6px 14px; font-size: 14px; color: #666; margin: 2px 0 8px;">
-              🔊 Yaxuan = <strong style="color: #222; font-weight: 500;">Yah-shwen</strong> &nbsp;·&nbsp; or just call me <strong style="color: #222; font-weight: 500;">Shelly</strong>
-            </p>
-              <br>
-              I am a Ph.D. candidate in Information Science at the University of Wisconsin–Madison, where I work with the <a href="https://collab.ischool.wisc.edu/" target="_blank">Collaborative Computing Group (MadCollab) </a> under the guidance of <a href="https://ischool.wisc.edu/staff/thebault-spieker-jacob/" target="_blank"> Dr. Jacob Thebault-Spieker</a>. My dissertation research examines how various infrastructures, including sociotechnical systems, material internet access, and language model adoption, shape participation and information behavior in digital knowledge systems.
-              I also collaborate with <a href="https://shamya.github.io/" target="_blank">Dr. Shamya Karumbaiah</a> at the Responsible AI for Learning (TRAIL) Lab, where we explore Responsible AI in Education. This work investigates how educators perceive and engage with responsible AI in real-world tasks, and how to design systems that build responsible teacher-AI partnerships — helping teachers know when to trust AI, reduce overreliance, and leverage their complementary strengths.
-              Additionally, as a side interest, I study LLM behavior, with a focus on sycophancy, using psychometric frameworks such as Item Response Theory (IRT) to evaluate and benchmark model responses across text.
-              <br>   
-              Prior to my Ph.D., I earned a Master’s degree in Urban Data Science from New York University.
-           
+            <!-- Publications -->
+            <h2 class="section-heading">Publications</h2>
+            <hr class="section-divider">
 
-        <h2>News</h2>
-        
-        <!-- Recent News -->
-        <div style="margin-bottom: 5px;">
-          <p style="margin: 0;">
-            <span style="color: green; font-weight: bold;">Apr 2026</span>
-            Excited to share that our paper, “Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia” has been accepted to #CHI2026! ¡Nos vemos en Barcelona! 🇪🇸
-          </p>
-        </div>
-            
-        <div style="margin-bottom: 5px;">
-          <p style="margin: 0;">
-            <span style="color: green; font-weight: bold;">Apr 2025</span>
-            Excited to share that our paper, “Responsible AI in Education: Understanding Teachers’ Priorities and Contextual Challenges” has been accepted to #FAccT2025! Honored to contribute to the growing dialogue on values, context, and ethics in AI.
-          </p>
-        </div>
-        
-        <div style="margin-bottom: 5px;">
-          <p style="margin: 0;">
-            <span style="color: green; font-weight: bold;">Apr 2025</span>
-            Excited to share that our paper, “AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education” has been accepted to #AIED2025! Grateful for the team's hard work and thrilled to see it recognized.
-          </p>
-        </div>
-        
-        <div style="margin-bottom: 5px;">
-          <p style="margin: 0;">
-            <span style="color: green; font-weight: bold;">Mar 2025</span>
-            Our <a href="paper/CSCL25_RAI.pdf" target="_blank">paper</a> “Toward Teacher‐Centered AI Design: Exploring the Role of Pedagogical Values and Contextual Factors in K‐12 Teachers’ Perceptions of Responsible AI” has been accepted for #CSCL2025. Huge thanks to my amazing and supportive collaborators!
-          </p>
-        </div>
-        
-        <div style="margin-bottom: 5px;">
-          <p style="margin: 0;">
-            <span style="color: green; font-weight: bold;">Oct 2024</span>
-            I will be attending CSCW2024 to present our <a href="paper/CSCW24_productivity_vs_equity.pdf" target="_blank">paper</a> and <a href="paper/CSCW24_Reddit.pdf" target="_blank">extended abstract</a>! See you in San José, Costa Rica 🦜
-          </p>
-        </div>
-        
-        <!-- Toggle Button -->
-        <p id="toggle-news" style="color: grey; font-style: italic; cursor: pointer; margin: 5px 0;" onclick="toggleNews()">View past news</p>
-        
-        <!-- Old News Section -->
-        <div id="old-news" style="display: none;">
-        
-          <div style="margin-bottom: 5px;">
-            <p style="margin: 0;">
-              <span style="color: green; font-weight: bold;">Sep 2024</span>
-              Starting the <a href="https://univercity.wisc.edu/2024/09/23/univercity-alliance-celebrates-partnerships-across-wisconsin/" target="_blank">UniverCity Alliance project</a> with Iowa County and the Southwestern Wisconsin Regional Planning Commission to develop an AI usage guide and legal policies for employees to navigate the integration of government and AI in future initiatives.
-            </p>
-          </div>
-        
-          <div style="margin-bottom: 5px;">
-            <p style="margin: 0;">
-              <span style="color: green; font-weight: bold;">Sep 2024</span>
-              Two full papers accepted to CSCW2025, both as first author! Excited to present in Bergen, Norway 🇳🇴. Huge thanks to my advisor for the support!
-            </p>
-          </div>
-        
-          <div style="margin-bottom: 5px;">
-            <p style="margin: 0;">
-              <span style="color: green; font-weight: bold;">Sep 2023</span>
-              Started my third year as the discussion section instructor for LIS 461: Data and Algorithms – Ethics and Policy this semester.
-            </p>
-          </div>
-        
-          <div style="margin-bottom: 5px;">
-            <p style="margin: 0;">
-              <span style="color: green; font-weight: bold;">Nov 2023</span>
-              My first-ever paper—and my first as first author—has been accepted to CSCW2024 after a long revision journey! Whew! 🎉 Huge thanks to my amazing mentee @Longjie (now a fantastic PhD student at UW) and my great advisor for their support and patience.
-            </p>
-          </div>
-        
-        </div>
-        
-        <!-- Toggle Script -->
-        <script>
-          function toggleNews() {
-            var news = document.getElementById("old-news");
-            var toggle = document.getElementById("toggle-news");
-            if (news.style.display === "none") {
-              news.style.display = "block";
-              toggle.innerText = "Hide older news";
-            } else {
-              news.style.display = "none";
-              toggle.innerText = "View past news";
-            }
-          }
-        </script>
+            <div class="pub-filter-bar">
+              <button class="pub-filter active" onclick="filterPubs('all', this)">All</button>
+              <button class="pub-filter dks-btn" onclick="filterPubs('dks', this)">Knowledge Production</button>
+              <button class="pub-filter rai-btn" onclick="filterPubs('rai', this)">Responsible AI in Education</button>
+            </div>
 
-              
+            <ol id="pub-list">
 
-            <h2>Publication</h2>
-            <hr>
-            <!--This list is reversed on the website due to reverse number listing-->
-
-
-            <ol class="publication A-list"> 
-
-
-              <li>
-                <p class="text-small-margin">
-                  Productivity or Equality? Tradeoffs in Volunteer Microtasking in Humanitarian OpenStreetMap. 
-                  <br>
-                  <b>Yaxuan Yin</b>, Longjie Guo, Jacob Thebault-Spieker. 
-                  <br>
-                  In Proceedings of ACM Conference On Computer‑Supported Cooperative Work And Social Computing (CSCW’24)
-                  <br>
-                  <a href="https://dl.acm.org/doi/abs/10.1145/3637390" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="paper/CSCW24_productivity_vs_equity.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
+              <li class="pub-item" data-cat="dks" data-year="2024">
+                <div class="pub-card-top">
+                  <div class="pub-title">Productivity or Equality? Tradeoffs in Volunteer Microtasking in Humanitarian OpenStreetMap</div>
+                  <span class="cat-tag dks">Knowledge Production</span>
+                </div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Longjie Guo, Jacob Thebault-Spieker</div>
+                <div class="pub-venue">ACM CSCW 2024</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://dl.acm.org/doi/abs/10.1145/3637390" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/CSCW24_productivity_vs_equity.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
               </li>
 
-              <li>
-                <p class="text-small-margin">
-                  The Effect of Population Density on Remote Humanitarian Mapping Activities: A Triple‑Difference Analysis.
-                  <br>
-                  <strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker.
-                  <br>
-                  In Proceedings of the ACM Conference on Computer‑Supported Cooperative Work and Social Computing (CSCW’25)
-                  <br>
-                  <a href="https://dl.acm.org/doi/10.1145/3710916" target="_blank">Source</a>
-                  &nbsp;|&nbsp;
-                  <a href="paper/CSCW25_The Effect of Population Density.pdf" target="_blank">Full PDF</a>
-                </p>
-              </li>          
-
-              <li>
-                <p class="text-small-margin">
-                  Beyond “Geo” HCI: Exploring Cultural Dimensions of Disparity in OpenStreetMap Road Safety Metadata.
-                  <br>
-                  <b>Yaxuan Yin</b>, Jacob Thebault-Spieker. 
-                  <br>
-                  In Proceedings of ACM Conference On Computer‑Supported Cooperative Work And Social Computing (CSCW’25)
-                  <br>
-                  <a href="https://doi/epdf/10.1145/3772318.3790903" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="paper/CSCW2025_Beyond_GeoHCI.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
-              </li>    
-
-              <li>
-                <p class="text-small-margin">
-                  Toward Teacher‐Centered AI Design: Exploring the Role of Pedagogical Values and Contextual Factors in K‐12 Teachers’ Perceptions of Responsible AI. 
-                  <br>
-                  🏅Best Paper Nomination 
-                  <br>
-                  <b>Yaxuan Yin</b>, Shamya Karumbaiah, Ju Lim, Shona Acquaye, Sara Schwartz. 
-                  <br>
-                  In Proceedings of the 19th International Conference on Computer Supported Collaborative Learning (CSCL'25).
-                  <br>
-                  <a href="https://doi.org/10.22318/cscl2025.817482" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="paper/CSCL25_RAI.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
-              </li>   
-
-              <li>
-                <p class="text-small-margin">
-                  AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education. 
-                  <br>
-                  🏅Best Paper Nomination
-                  <br>
-                  Shamya Karumbaiah, <b>Yaxuan Yin</b>, Aayush Bharadwaj. 
-                  <br>
-                  In Proceedings of the 26th International Conference on Artificial Intelligence in Education (AIED'25)
-                  <br>
-                  <a href="https://link.springer.com/chapter/10.1007/978-3-031-98414-3_5" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="paper/AIED2025_AIBAT.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
-              </li>   
-              
-              <li>
-                <p class="text-small-margin">
-                  Responsible AI in Education: Understanding Teachers’ Priorities and Contextual Challenges.
-                  <br>
-                  <b>Yaxuan Yin</b>, Shamya Karumbaiah, Shona Acquaye. 
-                  <br>
-                  In Proceedings of ACM Conference on Fairness, Accountability, and Transparency (FAccT’25)
-                  <br>
-                  <a href="https://doi.org/10.1145/3715275.3732176" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="paper/FAccT2025_RAI.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
-              </li>   
-
-              <li>
-                <p class="text-small-margin">
-                  Empowering Teachers to Design AI Roles for Work: An Empirical Study of Teachers' AI Role Design Practices.
-                  <br>
-                  Yujin Kim, <strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Devansh Saxena.
-                  <br>
-                  In Proceedings of the 5th Annual Meeting of the Symposium on Human-Computer Interaction for Work  (CHIWORK'26)
-                  <br>
-                  <!-- <a href="">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <a href="paper/CHIWork26_Role.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
+              <li class="pub-item" data-cat="dks" data-year="2025">
+                <div class="pub-card-top">
+                  <div class="pub-title">The Effect of Population Density on Remote Humanitarian Mapping Activities: A Triple‑Difference Analysis</div>
+                  <span class="cat-tag dks">Knowledge Production</span>
+                </div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
+                <div class="pub-venue">ACM CSCW 2025</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://dl.acm.org/doi/10.1145/3710916" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/CSCW25_The Effect of Population Density.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
               </li>
 
-              <li>
-                <p class="text-small-margin">
-                  What Constitutes AI Harms and/or Unfairness? An Empirical Analysis of Teacher Deliberation with a Fairness Elicitation Scaffold.
-                  <br>
-                  Shamya Karumbaiah, <strong>Yaxuan Yin</strong>, Harry Brighouse.
-                  <br>
-                  In Proceedings of the 27th International Conference on Artificial Intelligence in Education (AIED'26)
-                  <br>
-                  <!-- <a href="">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <a href="paper/AIED26_Unfairness_Harms.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
-              </li>
-              
-              <li>
-                <p class="text-small-margin">
-                  When AI Breaks, Teachers Repair: Pedagogical Repair Work in Situated Classroom Practice.
-                  <br>
-                  <strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Yujin Kim, Devansh Saxena.
-                  <br>
-                  In Proceedings of the 2026 ACM Conference on Fairness, Accountability, and Transparency (FAccT’26)
-                  <br>
-                  <!-- <a href="https://doi.org/10.1145/3772318.3790903">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
-              </li>
-              
-              <li>
-                <p class="text-small-margin">
-                  Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia.
-                  <br>
-                  <strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker.
-                  <br>
-                  In Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI’26)
-                  <br>
-                  <a href="https://doi.org/10.1145/3772318.3790903">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="paper/CHI2026_Broadband.pdf" target="_blank">Full PDF</a>
-                  <!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
-                  <!-- <a href="https://github.com/windx0303/CODA-19" target="_blank">Code and Data</a> -->
-                </p>
+              <li class="pub-item" data-cat="dks" data-year="2025">
+                <div class="pub-card-top">
+                  <div class="pub-title">Beyond "Geo" HCI: Exploring Cultural Dimensions of Disparity in OpenStreetMap Road Safety Metadata</div>
+                  <span class="cat-tag dks">Knowledge Production</span>
+                </div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
+                <div class="pub-venue">ACM CSCW 2025</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://dl.acm.org/doi/10.1145/3772318.3790903" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/CSCW2025_Beyond_GeoHCI.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
               </li>
 
-
-
-      
-            </ol> 
-
-            <h2>Referred Posters, Works-in-Progress, and Workshop Paper</h2>
-            <hr> 
-            <!-- This list is reversed on the website due to reverse number listing -->
-            <ol class="publication P-list">
-              <li>
-                <p class="text-small-margin">
-                  Understanding Perceptions of the Reddit Reaction Mechanism in Political Subreddits.
-                  <br>
-                  Longjie Guo, <b>Yaxuan Yin</b>, Jacob Thebault-Spieker.
-                  <br>
-                  In Proceedings of the ACM Conference on Computer‑Supported Cooperative Work and Social Computing (CSCW’24) Extended Abstract
-                  <br>
-                  <a href="https://dl.acm.org/doi/10.1145/3678884.3681861" target="_blank">Source</a>
-                  &nbsp;|&nbsp;
-                  <a href="paper/CSCW24_Reddit.pdf" target="_blank">Full PDF</a>
-                </p>
+              <li class="pub-item" data-cat="dks" data-year="2026">
+                <div class="pub-card-top">
+                  <div class="pub-title">Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia</div>
+                  <span class="cat-tag dks">Knowledge Production</span>
+                </div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
+                <div class="pub-venue">ACM CHI 2026</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://doi.org/10.1145/3772318.3790903" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/CHI2026_Broadband.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
               </li>
-              
-              <li>
-                <p class="text-small-margin">
-                  Redefining Value: Wikipedia’s Role in Dataset Governance for Foundation Models
-                  <br>
-                  <b>Yaxuan Yin</b>.
-                  <br>
-                  Workshop at the ACM Conference on Computer-Supported Cooperative Work and Social Computing (CSCW’25)
-                  <br>
-                  <a href="paper/CSCW25_Value_Workshop.pdf" target="_blank">Full PDF</a>
-                </p>
+
+              <li class="pub-item" data-cat="rai" data-year="2025">
+                <div class="pub-card-top">
+                  <div class="pub-title">Toward Teacher‐Centered AI Design: Exploring the Role of Pedagogical Values and Contextual Factors in K‐12 Teachers' Perceptions of Responsible AI</div>
+                  <span class="cat-tag rai">Responsible AI in Education</span>
+                </div>
+                <div class="pub-award">🏅 Best Paper Nomination</div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Ju Lim, Shona Acquaye, Sara Schwartz</div>
+                <div class="pub-venue">CSCL 2025</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://doi.org/10.22318/cscl2025.817482" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/CSCL25_RAI.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
+              </li>
+
+              <li class="pub-item" data-cat="rai" data-year="2025">
+                <div class="pub-card-top">
+                  <div class="pub-title">AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education</div>
+                  <span class="cat-tag rai">Responsible AI in Education</span>
+                </div>
+                <div class="pub-award">🏅 Best Paper Nomination</div>
+                <div class="pub-authors">Shamya Karumbaiah, <strong>Yaxuan Yin</strong>, Aayush Bharadwaj</div>
+                <div class="pub-venue">AIED 2025</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://link.springer.com/chapter/10.1007/978-3-031-98414-3_5" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/AIED2025_AIBAT.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
+              </li>
+
+              <li class="pub-item" data-cat="rai" data-year="2025">
+                <div class="pub-card-top">
+                  <div class="pub-title">Responsible AI in Education: Understanding Teachers' Priorities and Contextual Challenges</div>
+                  <span class="cat-tag rai">Responsible AI in Education</span>
+                </div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Shona Acquaye</div>
+                <div class="pub-venue">ACM FAccT 2025</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://doi.org/10.1145/3715275.3732176" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/FAccT2025_RAI.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
+              </li>
+
+              <li class="pub-item" data-cat="rai" data-year="2026">
+                <div class="pub-card-top">
+                  <div class="pub-title">Empowering Teachers to Design AI Roles for Work: An Empirical Study of Teachers' AI Role Design Practices</div>
+                  <span class="cat-tag rai">Responsible AI in Education</span>
+                </div>
+                <div class="pub-authors">Yujin Kim, <strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Devansh Saxena</div>
+                <div class="pub-venue">CHIWORK 2026</div>
+                <div class="pub-links">
+                  <span class="pub-link soon">↗ Source coming soon</span>
+                  <a class="pub-link pdf" href="paper/CHIWork26_Role.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
+              </li>
+
+              <li class="pub-item" data-cat="rai" data-year="2026">
+                <div class="pub-card-top">
+                  <div class="pub-title">What Constitutes AI Harms and/or Unfairness? An Empirical Analysis of Teacher Deliberation with a Fairness Elicitation Scaffold</div>
+                  <span class="cat-tag rai">Responsible AI in Education</span>
+                </div>
+                <div class="pub-authors">Shamya Karumbaiah, <strong>Yaxuan Yin</strong>, Harry Brighouse</div>
+                <div class="pub-venue">AIED 2026</div>
+                <div class="pub-links">
+                  <span class="pub-link soon">↗ Source coming soon</span>
+                  <a class="pub-link pdf" href="paper/AIED26_Unfairness_Harms.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
+              </li>
+
+              <li class="pub-item" data-cat="rai" data-year="2026">
+                <div class="pub-card-top">
+                  <div class="pub-title">When AI Breaks, Teachers Repair: Pedagogical Repair Work in Situated Classroom Practice</div>
+                  <span class="cat-tag rai">Responsible AI in Education</span>
+                </div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Yujin Kim, Devansh Saxena</div>
+                <div class="pub-venue">ACM FAccT 2026</div>
+                <div class="pub-links">
+                  <span class="pub-link soon">↗ Source coming soon</span>
+                  <span class="pub-link soon">⤓ PDF coming soon</span>
+                </div>
+              </li>
+
+            </ol>
+
+            <!-- Posters & Workshop Papers -->
+            <h2 class="section-heading">Posters, Works-in-Progress & Workshop Papers</h2>
+            <hr class="section-divider">
+            <ol class="poster-list">
+              <li class="poster-item">
+                <div class="pub-title">Understanding Perceptions of the Reddit Reaction Mechanism in Political Subreddits</div>
+                <div class="pub-authors">Longjie Guo, <strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
+                <div class="pub-venue">ACM CSCW 2024 — Extended Abstract</div>
+                <div class="pub-links">
+                  <a class="pub-link source" href="https://dl.acm.org/doi/10.1145/3678884.3681861" target="_blank">↗ Source</a>
+                  <a class="pub-link pdf" href="paper/CSCW24_Reddit.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
+              </li>
+              <li class="poster-item">
+                <div class="pub-title">Redefining Value: Wikipedia's Role in Dataset Governance for Foundation Models</div>
+                <div class="pub-authors"><strong>Yaxuan Yin</strong></div>
+                <div class="pub-venue">ACM CSCW 2025 — Workshop Paper</div>
+                <div class="pub-links">
+                  <span class="pub-link soon">↗ Source coming soon</span>
+                  <a class="pub-link pdf" href="paper/CSCW25_Value_Workshop.pdf" target="_blank">⤓ Full PDF</a>
+                </div>
               </li>
             </ol>
 
-            <h2>Awards, Fellowships, & Grants</h2>
-            <div>
-              <p>
-                <span style="color: green; font-weight: bold;">2024</span>
-                <a href="https://univercity.wisc.edu/2024/09/03/univercity-alliance-scholars-partner-with-wisconsin-communities-to-work-on-local-priorities/" target="_blank" style="text-decoration: none; color: inherit;">
-                  UniverCity Alliance Scholars, UW‑Madison
-                </a>
-              </p>              
-              <p>
-                <span style="color: green; font-weight: bold;">2024</span> Graduate Fellows, The Institute for Diversity Science, UW‑Madison
-              </p>
-              <p>
-                <span style="color: green; font-weight: bold;">2022</span> Google Computer Science Research Mentorship Program, Google
-              </p>
-            </div>
-            
-            
-            
-            <!-- <h2>Other Publications</h2>
-            <hr> -->
+            <!-- Awards -->
+            <h2 class="section-heading">Awards, Fellowships & Grants</h2>
+            <hr class="section-divider">
+            <ul class="award-list">
+              <li class="award-item">
+                <span class="award-year">2024</span>
+                <span><a href="https://univercity.wisc.edu/2024/09/03/univercity-alliance-scholars-partner-with-wisconsin-communities-to-work-on-local-priorities/" target="_blank">UniverCity Alliance Scholars</a>, UW–Madison</span>
+              </li>
+              <li class="award-item">
+                <span class="award-year">2024</span>
+                <span>Graduate Fellow, Institute for Diversity Science, UW–Madison</span>
+              </li>
+              <li class="award-item">
+                <span class="award-year">2022</span>
+                <span>Google Computer Science Research Mentorship Program, Google</span>
+              </li>
+            </ul>
 
-
-            <!--This list is reversed on the website due to reverse number listing-->
-            
-            
-            <!-- <ol class="publication O-list">
-              <li>
-                <p class="text-small-margin">
-                  <b>Yen-Chia Hsu</b>. 2016. Industrial Smoke Detection and Visualization. Technical Report CMU-RI-TR-16-55. Robotics Institute, Carnegie Mellon University, Pittsburgh, PA.
-                  <br>
-                  <a href="file/industrial-smoke-detection-and-visualization.pdf" target="_blank">PDF</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://www.ri.cmu.edu/publications/industrial-smoke-detection-and-visualization/" target="_blank">Preprint</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://github.com/yenchiah/industrial-smoke-detection" target="_blank">Code and Data</a>
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>Yen-Chia Hsu</b>. 2018. SimArch: A Multi-agent System For Human Path Simulation In Architecture Design. arXiv preprint arXiv:1807.03760.
-                  <br>
-                  <a href="https://arxiv.org/abs/1807.03760" target="_blank">Preprint</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://github.com/yenchiah/SimArch" target="_blank">Code and Data</a>
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Emiliano Huet-Vaughn, Nicholas Muller, and <b>Yen-Chia Hsu</b>. 2018. Livestreaming Pollution: A New Form of Public Disclosure and a Catalyst for Citizen Engagement. No. w24664. National Bureau of Economic Research, 2018.
-                  <br>
-                  <a href="http://www.nber.org/papers/w24664" target="_blank">Preprint</a>
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>Yen-Chia Hsu</b>. 2018. Designing Interactive Systems for Community Citizen Science. Ph.D. Dissertation. Robotics Institute, Carnegie Mellon University, Pittsburgh, PA.
-                  <br>
-                  <a href="https://www.ri.cmu.edu/wp-content/uploads/2018/08/yc_hsu_robotics_2018.pdf" target="_blank">PDF</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://figshare.com/articles/Designing_Interactive_Systems_for_Community_Citizen_Science/7195082/1" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://www.ri.cmu.edu/publications/designing-interactive-systems-for-community-citizen-science/" target="_blank">Preprint</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://www.youtube.com/watch?v=QOFfCD8r240" target="_blank">Video</a>
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>Yen-Chia Hsu</b>. 2021. 社區公民科學: 用開放數位平台的技術與公民合作解決都市環境問題. 眼底城事.
-                  <br>
-                  <a href="https://eyesonplace.net/2021/03/19/16600/?fbclid=IwAR1BGVj4_j385ApEYIjtYpdN6UM_0Fx7llPCJqV2KoBvYHWFB-azvPwMNAk" target="_blank">Source</a>
-                </p>
-              </li>
-            </ol> -->
-
-
-            <!-- <h2>Featured Media and Book Coverage</h2>
-            <hr> -->
-
-
-            <!--This list is reversed on the website due to reverse number listing-->
- 
-            <!-- <ol class="publication F-list">
-              <li>
-                <p class="text-small-margin">
-                  <b>TIME</b>. Jeffrey Kluger. 2013.
-                  <a target="_blank" href="http://world.time.com/timelapse/">Timelapse: Landsat Satellite Images of Climate Change</a>.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>Pittsburgh Post-Gazette</b>. Ashley Murray. 2017.
-                  <a target="_blank" href="http://www.post-gazette.com/business/tech-news/2017/07/03/smell-pgh-app-carnegie-mellon-university-cmu-create-lab-foul-smell-pittsburgh/stories/201706300430">Carnegie Mellon Scientists Use App to Track Foul Odors in Pittsburgh</a>.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>PC Magazine</b>. Michelle Donahue. 2018.
-                  <a target="_blank" href="https://www.pcmag.com/article/360317/citizen-science-do-try-this-at-home">Citizen Science: Do Try This at Home</a>.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>Pittsburgh Earth Day</b>. Amanda Waltz. 2021.
-                  <a target="_blank" href="https://pittsburghearthday.org/partnership-wins-award-for-using-tech-to-track-pittsburgh-air-pollution/">Partnership Wins Award for Using Tech to Track Pittsburgh Air Pollution</a>.
-                </p>
-              </li> -->
-
-
-
-              <!--<li>
-                <p class="text-small-margin">
-                  <a target="_blank" href=""></a>
-                  <br>in by (2016)
-                </p>
-              </li>-->
-            
-
-              <!--<li>
-                <p class="text-small-margin">
-                  <b>Place</b>. Author. 2018.
-                  <a target="_blank" href="">Title</a>.
-                </p>
-                </li>-->
-            <!-- </ol>
-            <h2>Released Open Source Tools</h2>
-            <hr> -->
-
-
-            <!--This list is reversed on the website due to reverse number listing-->
-            <!-- <ol class="publication T-list">
-              <li>
-                <p class="text-small-margin">
-                  Yen-Chia Hsu.
-                  <a target="_blank" href="https://github.com/yenchiah/SynTag">A Web-based Platform for Labeling Real-time Video</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Yen-Chia Hsu.
-                  <a target="_blank" href="https://github.com/yenchiah/SimArch">A Multi-agent System for Human Path Simulation In Architecture Design</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Yen-Chia Hsu.
-                  <a target="_blank" href="https://github.com/yenchiah/SENSEable-Shoes">A Wearable Shoe-Integrated Interaction Interface</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Yen-Chia Hsu.
-                  <a target="_blank" href="https://github.com/yenchiah/timeline-heatmap">A JavaScript Library for Creating an Interactive Timeline Heatmap</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Yen-Chia Hsu.
-                  <a target="_blank" href="https://github.com/yenchiah/geo-heatmap">A JavaScript Library for Creating an Interactive Geographical Heatmap</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Yen-Chia Hsu.
-                  <a target="_blank" href="https://github.com/yenchiah/project-website-template">A HTML/CSS Template for Building Projects or Personal Websites</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  CMU CREATE Lab.
-                  <a target="_blank" href="https://github.com/CMU-CREATE-Lab/timemachine-viewer">A Web-Based Interactive Viewer for Visualizing Large-Scale Timelapses</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  CMU CREATE Lab.
-                  <a target="_blank" href="https://github.com/CMU-CREATE-Lab/ehp-channel">Visualization Tool for Environmental Sensing and Public Health Data</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  CMU CREATE Lab.
-                  <a target="_blank" href="https://github.com/CMU-CREATE-Lab/smell-pittsburgh-rails">A Mobile Application to Crowdsource and Visualize Pollution Odors</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  CMU CREATE Lab.
-                  <a target="_blank" href="https://github.com/CMU-CREATE-Lab/data-visualization-tools">Earth Timelapse Viewer</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  CMU CREATE Lab.
-                  <a target="_blank" href="https://github.com/CMU-CREATE-Lab/smell-pittsburgh-prediction">Predicting and Interpreting Smell Data Obtained from Smell Pittsburgh</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  CMU CREATE Lab.
-                  <a target="_blank" href="https://github.com/CMU-CREATE-Lab/video-labeling-tool">A Tool for Labeling Video Clips (both Front-end and Back-end)</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  CMU CREATE Lab.
-                  <a target="_blank" href="https://github.com/CMU-CREATE-Lab/deep-smoke-machine">Deep Learning Models and Dataset for Recognizing Industrial Smoke Emissions</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  TUD KInD.
-                  <a target="_blank" href="https://github.com/TUD-KInD/COCTEAU-TUD">A Tool for Citizen Engagement at Scale</a>.
-                  Computer software.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Yen-Chia Hsu.
-                  <a target="_blank" href="https://github.com/yenchiah/project-application-template">A Template to Start a Web-based Project That Has Both Back-end and Front-end</a>.
-                  Computer software.
-                </p>
-              </li>
-            </ol>
-          </div> -->
-
-          <!--Start Projects-->
-
-          <!-- <div class="flex-row full-width">
-            <div class="flex-item flex-column full-width">
-              <h2>Projects</h2>
-              <hr>
-            </div>
           </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/cocteau.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text">COCTEAU: an Empathy-Based Tool for Decision-Making [P5, P6, T14], 2021 - 2022</span><br>
-                I worked in a team to build a tool to strengthen interactions between citizens and decision-makers on a large scale.
-                The goal is to elicit empathetic relations among stakeholders to collect perspectives on societal issues.
-                (<a href="https://periscope.io.tudelft.nl/" target="_blank">website link</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/smoke-labeling.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text">Project RISE: Recognizing Industrial Smoke Emissions [C6, T13], 2018 - 2020</span><br>
-                I co-designed a system with local communities in labeling videos with industrial smoke emissions.
-                These labels were used to train a deep neural network to recognize smoke and industrial pollution events for air quality advocacy.
-                (<a href="https://smoke.createlab.org/" target="_blank">website link</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/earthtime-editor.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text">A Tool for Creating Interactive Stories on the EarthTime Timelapse [T10], 2018</span><br>
-                I worked in a team to develop a web-based tool that enables users to create, edit, and share
-                stories about nature changes and human impact on EarthTime, visualizing the transformation of
-                the EarthTime over three decades with images and datasets.
-                (<a href="https://earthtime.org" target="_blank">website link</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/smell-pgh.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2017/07/10/smell-pgh-a-mobile-application-to-crowdsource-and-visualize-pollution-odors/" target="_blank">Community-Empowered Mobile Smell Reporting System [C4, F2, T9, A6], 2017 - 2018</a></span><br>
-                I worked in a team to develop Smell Pittsburgh, a mobile application for citizens to report pollution odors to regulators.
-                A map visualizes the reports with air quality and wind data.
-                A machine learning model predicts odors and sends push notifications.
-                (<a href="http://smellpgh.org" target="_blank">website link</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/env-health-channel.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2017/08/31/environmental-health-channel-an-online-tool-for-visualizing-sensor-and-health-data/" target="_blank">Visualization Tool for Environmental Sensing and Public Health Data [P2, T5, T8], 2017</a></span><br>
-                I worked in a team to develop the Environmental Health Channel, an interactive web-based tool for visualizing health symptoms, particulate measurements, and personal stories from residents who are affected by oil and gas drilling development.
-                (<a href="http://envhealthchannel.org" target="_blank">website link</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/air-quality-monitor.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2017/02/02/community-empowered-air-quality-monitoring-system-acm-chi-2017-full-paper/" target="_blank">Community-Empowered Air Quality Monitoring System [C3, F3, A5], 2015 - 2016</a></span><br>
-                I worked with local citizens to build an air quality monitoring system that integrates camera data, sensing data, and smell reports.
-                The system used computer vision to generate videos with smoke emissions to serve as evidence of pollution.
-                (<a href="http://shenangochannel.org/" target="_blank">website link</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/timelapse-editor.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2016/05/14/a-web-based-large-scale-timelapse-editor-for-creating-and-sharing-guided-video-tours-and-interactive-slideshows-ieee-vis-2015-poster/" target="_blank">A Web-based Large-scale Timelapse Editor for Interactive Storytelling [P1, T7], 2014</a></span><br>
-                Based on the timelapse viewer, I developed a tool for users to create interactive slideshows or guided tours.
-                Users can embed or share the slideshows or tours on social media for telling interactive stories.
-                (<a href="http://timemachine.cmucreatelab.org/wiki/EarthEngineTourEditor" target="_blank">website link</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/timelapse-viewer.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2016/05/13/earth-timelaspe-viewer-visualizing-landsat-satellite-imagery-webby-peoples-voice-award-2014/" target="_blank">Earth Timelaspe Viewer Visualizing Landsat Satellite Imagery [F1, T7, A4], 2013</a></span><br>
-                I worked in a team to develop an Earth timelapse viewer, consisting of cloud-free mosaics of the planet with billions of pixels for decades.
-                The interactive viewer was released with Google and TIME.
-                (<a href="https://earthengine.google.com/timelapse/" target="_blank">link to Google Earth Engine</a>, <a href="http://world.time.com/timelapse/" target="_blank">link to TIME</a>)
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/simarch.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2016/05/11/simarch-a-multi-agent-system-for-human-path-simulation-in-architecture-design/" target="_blank">SimArch: A Multi-Agent System for Human Path Simulation [O2, T2], 2012</a></span><br>
-                SimArch uses Markov Decision Process to build a behavior model.
-                The model simulates mental states, target range detection, and collision prediction when agents behave in a museum.
-                SimArch outputs the prediction of how likely a person will occur in a location after simulation.
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/senseable-shoes.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2016/05/09/senseable-shoes-hands-free-and-eyes-free-mobile-interaction/" target="_blank">SENSEable Shoes: Hands-Free and Eyes-Free Mobile Interaction [T3], 2012</a></span><br>
-                SENSEable Shoes is a platform for interaction designers to create applications.
-                It recognizes low-level activities by measuring the weight distribution over the feet with sensors in the shoe pad.
-                A Support Vector Machine classifier identifies mobile activities and foot gestures.
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/drawolin.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2016/05/08/draw-o-lin-a-music-visualizer-for-violin/" target="_blank">Draw-o-lin: A Music Visualizer for Violin, 2011</a></span><br>
-                What does music look like?
-                Draw-o-lin is an interactive mobile robot visualizing music by drawing graphs on a paper according to various sound properties.
-                Violin performers control the robot by playing various pitches, alternating the volume, and changing the tempo.
-              </p>
-            </div>
-          </div>
-          <div class="flex-row">
-            <div class="flex-item flex-item-stretch flex-column">
-              <img class="image max-width-600" src="img/syntag.jpg">
-            </div>
-            <div class="flex-item flex-item-stretch-6 flex-column">
-              <p class="text">
-                <span class="highlight-text"><a href="https://yenchiah.wordpress.com/2016/05/12/syntag-a-web-based-platform-for-labeling-real-time-video-acm-cscw-2012-short-paper/" target="_blank">SynTag: A Web-Based Platform for Labeling Real-time Video [C2, C1, T1], 2010</a></span><br>
-                Users can label Good, Question, and Disagree tags in real or non-real time with visualization of time-stamp video previews on an interactive timeline.
-                SynTag creates thumbnails by using real-time tags for presenters to receive instant feedback and for others to retrieve videos.
-              </p>
-            </div>
-          </div> -->
-          <!--End Projects-->
         </div>
+
       </div>
     </div>
   </div>
-</body>
 
+  <script>
+    function togglePronunciation() {
+      var p = document.getElementById('pronunciation-popup');
+      p.style.display = (p.style.display === 'none' || p.style.display === '') ? 'block' : 'none';
+    }
+    function toggleNews() {
+      var news = document.getElementById('old-news');
+      var btn  = document.getElementById('toggle-news-btn');
+      if (news.style.display === 'none') {
+        news.style.display = 'block';
+        btn.textContent = 'Hide older news';
+      } else {
+        news.style.display = 'none';
+        btn.textContent = 'View past news';
+      }
+    }
+    function sortPubsByYear() {
+      var list = document.getElementById('pub-list');
+      var items = Array.from(list.querySelectorAll('.pub-item'));
+      items.sort(function(a, b) {
+        return parseInt(b.dataset.year) - parseInt(a.dataset.year);
+      });
+      items.forEach(function(item) { list.appendChild(item); });
+    }
+
+    function filterPubs(cat, btn) {
+      document.querySelectorAll('.pub-filter').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.pub-item').forEach(function(item) {
+        item.classList.toggle('hidden', cat !== 'all' && item.dataset.cat !== cat);
+      });
+    }
+
+    sortPubsByYear();
+  </script>
+</body>
 </html>
