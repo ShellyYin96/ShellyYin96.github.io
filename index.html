@@ -9,7 +9,7 @@
   <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/menu.js"></script>
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -324,7 +324,7 @@
 </head>
 
 <body>
-  <div class="menu-container"></div>
+
   <div class="content-container">
     <div class="content">
       <div class="content-table flex-column">
@@ -334,11 +334,11 @@
           <img class="profile-photo" src="img/7741771957873_.pic.jpg" alt="Yaxuan Yin">
           <div class="profile-info">
             <h1 class="profile-name">
-              <span class="name-clickable" id="name-trigger" onclick="togglePronunciation()" title="Click to see pronunciation">Yaxuan (Shelly) Yin</span>
+              Yaxuan (Shelly) Yin
+              <button onclick="speakName()" title="Click to hear pronunciation" style="background:none; border:none; cursor:pointer; padding: 0 0 0 6px; vertical-align: middle; font-size: 1rem; opacity: 0.6; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">🔊</button>
             </h1>
-            <div id="pronunciation-popup">
-              🔊 <strong style="color:#222;">Yah-shwen</strong> &nbsp;<span style="color:#999; font-size:12px;">/jɑ.ɕɥɛn/</span>&nbsp; · or just call me <strong style="color:#222;">Shelly</strong>
-              <span class="pron-close" onclick="togglePronunciation()">✕</span>
+            <div style="font-size: 13.5px; color: #777; margin: 2px 0 10px; font-style: italic;">
+              Yah-shwen &nbsp;<span style="color:#bbb;">·</span>&nbsp; <span style="color:#aaa; font-size:12px;">/jɑ.ɕɥɛn/</span> &nbsp;<span style="color:#bbb;">·</span>&nbsp; correct pronunciation is optional 😊
             </div>
             <div class="profile-meta">
               PhD Candidate &nbsp;·&nbsp; Information Science<br>
@@ -361,7 +361,7 @@
             <hr class="section-divider">
             <p class="bio-text">👋 Hi, I'm Yaxuan (Shelly). I am a Ph.D. candidate in Information Science at the University of Wisconsin–Madison, where I work with the <a href="https://collab.ischool.wisc.edu/" target="_blank">Collaborative Computing Group (MadCollab)</a> under the guidance of <a href="https://ischool.wisc.edu/staff/thebault-spieker-jacob/" target="_blank">Dr. Jacob Thebault-Spieker</a>.</p>
             <p class="bio-text">My research examines how human-generated data and the infrastructures that shape its production interact to reinforce, and in some cases reshape, existing knowledge gaps and contribution inequalities. My forward-looking research agenda centers on (1) making the value of individual contributions visible through the lens of large language models, (2) empowering contributors to leverage that value, and (3) helping communities critically engage with how platforms like Wikipedia are being transformed in the LLM era and how to foster healthier, more equitable contribution ecosystems.</p>
-            <p class="bio-text">In collaboration with <a href="https://shamya.github.io/" target="_blank">Dr. Shamya Karumbaiah</a> at the Responsible AI for Learning (TRAIL) Lab, I also pursue a parallel research thread on Responsible AI in Education. This work (1) contextualizes how educators perceive and navigate bias and fairness challenges in real-world tasks, and (2) develops tools that support educators in identifying and auditing AI behavior, with the goal of informing the design of more responsible AI systems.</p>
+            <p class="bio-text">In collaboration with <a href="https://shamya.github.io/" target="_blank">Dr. Shamya Karumbaiah</a> at the <a href="https://trail.wcer.wisc.edu/" target="_blank">Responsible AI for Learning (TRAIL) Lab</a>, I also pursue a parallel research thread on Responsible AI in Education. This work (1) contextualizes how educators perceive and navigate bias and harms in teaching and learning, (2) develops audit tools that support educators in identifying and evaluating AI behavior and bias, (3) leverages audit data to inform model refinement in domain-specific contexts, and (4) employs participatory design to surface stakeholder values and embed them into the development of responsible AI systems.</p>
             <p class="bio-text">Prior to my Ph.D., I earned a Master's degree in Urban Data Science from New York University.</p>
 
             <!-- News -->
@@ -421,7 +421,7 @@
 
             <ol id="pub-list">
 
-              <li class="pub-item" data-cat="dks" data-year="2024">
+              <li class="pub-item" data-cat="dks" data-year="2024" data-first="true">
                 <div class="pub-card-top">
                   <div class="pub-title">Productivity or Equality? Tradeoffs in Volunteer Microtasking in Humanitarian OpenStreetMap</div>
                   <span class="cat-tag dks">Knowledge Production</span>
@@ -434,7 +434,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="dks" data-year="2025">
+              <li class="pub-item" data-cat="dks" data-year="2025" data-first="true">
                 <div class="pub-card-top">
                   <div class="pub-title">The Effect of Population Density on Remote Humanitarian Mapping Activities: A Triple‑Difference Analysis</div>
                   <span class="cat-tag dks">Knowledge Production</span>
@@ -447,7 +447,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="dks" data-year="2025">
+              <li class="pub-item" data-cat="dks" data-year="2025" data-first="true">
                 <div class="pub-card-top">
                   <div class="pub-title">Beyond "Geo" HCI: Exploring Cultural Dimensions of Disparity in OpenStreetMap Road Safety Metadata</div>
                   <span class="cat-tag dks">Knowledge Production</span>
@@ -460,7 +460,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="dks" data-year="2026">
+              <li class="pub-item" data-cat="dks" data-year="2026" data-first="true">
                 <div class="pub-card-top">
                   <div class="pub-title">Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia</div>
                   <span class="cat-tag dks">Knowledge Production</span>
@@ -473,7 +473,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="rai" data-year="2025">
+              <li class="pub-item" data-cat="rai" data-year="2025" data-first="true">
                 <div class="pub-card-top">
                   <div class="pub-title">Toward Teacher‐Centered AI Design: Exploring the Role of Pedagogical Values and Contextual Factors in K‐12 Teachers' Perceptions of Responsible AI</div>
                   <span class="cat-tag rai">Responsible AI in Education</span>
@@ -487,7 +487,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="rai" data-year="2025">
+              <li class="pub-item" data-cat="rai" data-year="2025" data-first="false">
                 <div class="pub-card-top">
                   <div class="pub-title">AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education</div>
                   <span class="cat-tag rai">Responsible AI in Education</span>
@@ -501,7 +501,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="rai" data-year="2025">
+              <li class="pub-item" data-cat="rai" data-year="2025" data-first="true">
                 <div class="pub-card-top">
                   <div class="pub-title">Responsible AI in Education: Understanding Teachers' Priorities and Contextual Challenges</div>
                   <span class="cat-tag rai">Responsible AI in Education</span>
@@ -514,7 +514,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="rai" data-year="2026">
+              <li class="pub-item" data-cat="rai" data-year="2026" data-first="false">
                 <div class="pub-card-top">
                   <div class="pub-title">Empowering Teachers to Design AI Roles for Work: An Empirical Study of Teachers' AI Role Design Practices</div>
                   <span class="cat-tag rai">Responsible AI in Education</span>
@@ -527,7 +527,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="rai" data-year="2026">
+              <li class="pub-item" data-cat="rai" data-year="2026" data-first="false">
                 <div class="pub-card-top">
                   <div class="pub-title">What Constitutes AI Harms and/or Unfairness? An Empirical Analysis of Teacher Deliberation with a Fairness Elicitation Scaffold</div>
                   <span class="cat-tag rai">Responsible AI in Education</span>
@@ -540,7 +540,7 @@
                 </div>
               </li>
 
-              <li class="pub-item" data-cat="rai" data-year="2026">
+              <li class="pub-item" data-cat="rai" data-year="2026" data-first="true">
                 <div class="pub-card-top">
                   <div class="pub-title">When AI Breaks, Teachers Repair: Pedagogical Repair Work in Situated Classroom Practice</div>
                   <span class="cat-tag rai">Responsible AI in Education</span>
@@ -584,16 +584,51 @@
             <hr class="section-divider">
             <ul class="award-list">
               <li class="award-item">
+                <span class="award-year">2025</span>
+                <div>
+                  Best Paper Nomination — AIBAT @ AIED 2025
+                  &nbsp;<a href="https://link.springer.com/chapter/10.1007/978-3-031-98414-3_5" target="_blank" style="font-size:11.5px; padding:2px 8px; border-radius:4px; border:1px solid #b3cfea; background:#f0f6fc; color:#2c5f8a; text-decoration:none; white-space:nowrap;">↗ Paper</a>
+                </div>
+              </li>
+              <li class="award-item">
+                <span class="award-year">2025</span>
+                <div>
+                  Best Paper Nomination — Responsible AI in Education @ CSCL 2025
+                  &nbsp;<a href="https://doi.org/10.22318/cscl2025.817482" target="_blank" style="font-size:11.5px; padding:2px 8px; border-radius:4px; border:1px solid #b3cfea; background:#f0f6fc; color:#2c5f8a; text-decoration:none; white-space:nowrap;">↗ Paper</a>
+                </div>
+              </li>
+
+              <li class="award-item">
+                <span class="award-year">2025</span>
+                <div>Lambda's Research Grant</div>
+              </li>
+
+              <li class="award-item">
                 <span class="award-year">2024</span>
-                <span><a href="https://univercity.wisc.edu/2024/09/03/univercity-alliance-scholars-partner-with-wisconsin-communities-to-work-on-local-priorities/" target="_blank">UniverCity Alliance Scholars</a>, UW–Madison</span>
+                <div>
+                  <a href="https://univercity.wisc.edu/2024/09/03/univercity-alliance-scholars-partner-with-wisconsin-communities-to-work-on-local-priorities/" target="_blank">UniverCity Alliance Scholars</a>
+                </div>
               </li>
               <li class="award-item">
                 <span class="award-year">2024</span>
-                <span>Graduate Fellow, Institute for Diversity Science, UW–Madison</span>
+                <div>
+                  Graduate Fellows
+                  <div style="font-size:12.5px; color:#888; margin-top:1px;">The Institute for Diversity Science, UW–Madison</div>
+                </div>
               </li>
               <li class="award-item">
                 <span class="award-year">2022</span>
-                <span>Google Computer Science Research Mentorship Program, Google</span>
+                <div>
+                  Fellow Researcher
+                  <div style="font-size:12.5px; color:#888; margin-top:1px;">Center for Advancing Safety of Machine Intelligence, Northwestern University</div>
+                </div>
+              </li>
+              <li class="award-item">
+                <span class="award-year">2022</span>
+                <div>
+                  Google Computer Science Research Mentorship
+                  <div style="font-size:12.5px; color:#888; margin-top:1px;">Google</div>
+                </div>
               </li>
             </ul>
 
@@ -605,9 +640,13 @@
   </div>
 
   <script>
-    function togglePronunciation() {
-      var p = document.getElementById('pronunciation-popup');
-      p.style.display = (p.style.display === 'none' || p.style.display === '') ? 'block' : 'none';
+    function speakName() {
+      if ('speechSynthesis' in window) {
+        var u = new SpeechSynthesisUtterance('Yah shwen');
+        u.lang = 'en-US';
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
     }
     function toggleNews() {
       var news = document.getElementById('old-news');
@@ -624,7 +663,11 @@
       var list = document.getElementById('pub-list');
       var items = Array.from(list.querySelectorAll('.pub-item'));
       items.sort(function(a, b) {
-        return parseInt(b.dataset.year) - parseInt(a.dataset.year);
+        var yearDiff = parseInt(b.dataset.year) - parseInt(a.dataset.year);
+        if (yearDiff !== 0) return yearDiff;
+        var aFirst = a.dataset.first === 'true' ? 0 : 1;
+        var bFirst = b.dataset.first === 'true' ? 0 : 1;
+        return aFirst - bFirst;
       });
       items.forEach(function(item) { list.appendChild(item); });
     }
