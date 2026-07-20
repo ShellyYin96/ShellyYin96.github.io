@@ -1,45 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" font-family="-apple-system,Segoe UI,sans-serif">
-  <rect width="600" height="360" fill="#ffffff"/>
-  <!-- repair icon: hand + wrench simplified as wrench in circle -->
-  <circle cx="300" cy="52" r="34" fill="#f2f3f5" stroke="#2b3137" stroke-width="3"/>
-  <g transform="rotate(40 300 52)">
-    <rect x="294" y="34" width="12" height="40" rx="6" fill="#2b3137"/>
-    <circle cx="300" cy="30" r="10" fill="none" stroke="#2b3137" stroke-width="8"/>
-  </g>
-  <!-- connector lines -->
-  <path d="M 300 88 L 300 104 M 110 104 L 490 104 M 110 104 L 110 122 M 300 104 L 300 122 M 490 104 L 490 122" stroke="#2b3137" stroke-width="3" fill="none"/>
-  <!-- three cards: gray / yellow / pink like the paper figure -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 424" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="600" height="424" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4a4a4a"/></marker>
+  </defs>
+
+  <!-- title block -->
+  <text x="300" y="30" font-size="14" font-weight="800" fill="#333333" text-anchor="middle" letter-spacing="1.5">WHEN AI BREAKS, WHO REPAIRS?</text>
+  <text x="300" y="48" font-size="10.5" fill="#8f8f8f" text-anchor="middle" font-style="italic">focus groups and a deliberation tool with K&#8211;12 teachers</text>
+  <line x1="210" y1="60" x2="390" y2="60" stroke="#e4e4e4" stroke-width="1.4"/>
+
+  <!-- flow row -->
   <g>
-    <rect x="30" y="150" width="160" height="180" rx="18" fill="#dcdfe4"/>
-    <rect x="42" y="122" width="136" height="52" rx="6" fill="#111417"/>
-    <text x="110" y="144" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">ENTANGLED</text>
-    <text x="110" y="164" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">VALUES</text>
-    <g fill="#b9bec7">
-      <rect x="52" y="196" width="116" height="9" rx="4.5"/><rect x="52" y="214" width="96" height="9" rx="4.5"/>
-      <rect x="52" y="244" width="116" height="9" rx="4.5"/><rect x="52" y="262" width="84" height="9" rx="4.5"/>
-      <rect x="52" y="292" width="104" height="9" rx="4.5"/>
+    <rect x="90" y="78" width="132" height="44" rx="8" fill="#ffffff" stroke="#b3b3b3" stroke-width="1.6"/>
+    <text x="148" y="97" font-size="11.5" font-weight="700" fill="#404040" text-anchor="middle" letter-spacing="0.6">AI BREAKS</text>
+    <text x="148" y="112" font-size="9.5" fill="#8f8f8f" text-anchor="middle" font-style="italic">mid&#8209;lesson</text>
+    <path d="M 197 88 L 204 96 L 199 96 L 207 106" stroke="#dd7a72" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <line x1="230" y1="100" x2="264" y2="100" stroke="#4a4a4a" stroke-width="1.8" marker-end="url(#ah)"/>
+  <g transform="rotate(40 300 100)">
+    <rect x="296" y="90" width="8" height="24" rx="4" fill="#4a4a4a"/>
+    <circle cx="300" cy="86" r="6" fill="none" stroke="#4a4a4a" stroke-width="4.5"/>
+  </g>
+  <line x1="336" y1="100" x2="370" y2="100" stroke="#4a4a4a" stroke-width="1.8" marker-end="url(#ah)"/>
+  <g>
+    <rect x="378" y="78" width="132" height="44" rx="8" fill="#ffffff" stroke="#b3b3b3" stroke-width="1.6"/>
+    <text x="444" y="97" font-size="11.5" font-weight="700" fill="#404040" text-anchor="middle" letter-spacing="0.6">TEACHERS REPAIR</text>
+    <text x="444" y="112" font-size="9.5" fill="#8f8f8f" text-anchor="middle" font-style="italic">invisible pedagogical work</text>
+  </g>
+
+  <!-- connectors -->
+  <path d="M 300 128 L 300 140 M 108 140 L 492 140 M 108 140 L 108 150 M 300 140 L 300 150 M 492 140 L 492 150" stroke="#c9c9c9" stroke-width="1.4" fill="none"/>
+
+  <!-- three cards, tight and evenly set -->
+  <!-- card 1 -->
+  <g>
+    <rect x="24" y="172" width="168" height="232" rx="10" fill="#ffffff" stroke="#c6c6c6" stroke-width="1.6"/>
+    <rect x="38" y="156" width="140" height="34" rx="4" fill="#202020"/>
+    <text x="108" y="171" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">ENTANGLED</text>
+    <text x="108" y="184" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">VALUES</text>
+    <g font-size="10" fill="#555555">
+      <circle cx="44" cy="212" r="2" fill="#9b9b9b"/>
+      <text x="54" y="215">AI surveillance vs.</text>
+      <text x="54" y="229">accountability, autonomy,</text>
+      <text x="54" y="243">and privacy</text>
+      <circle cx="44" cy="270" r="2" fill="#9b9b9b"/>
+      <text x="54" y="273">mandated adoption</text>
+      <text x="54" y="287">reshapes autonomy</text>
+      <text x="54" y="301">and efficiency</text>
+      <circle cx="44" cy="328" r="2" fill="#9b9b9b"/>
+      <text x="54" y="331">assessment tangles</text>
+      <text x="54" y="345">fairness, transparency,</text>
+      <text x="54" y="359">and trust</text>
     </g>
   </g>
+  <!-- card 2 -->
   <g>
-    <rect x="220" y="150" width="160" height="180" rx="18" fill="#faf0bd"/>
-    <rect x="228" y="122" width="144" height="52" rx="6" fill="#111417"/>
-    <text x="300" y="144" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">INVALID</text>
-    <text x="300" y="164" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">METRICS</text>
-    <g fill="#e3d48a">
-      <rect x="242" y="196" width="116" height="9" rx="4.5"/><rect x="242" y="214" width="96" height="9" rx="4.5"/>
-      <rect x="242" y="244" width="116" height="9" rx="4.5"/><rect x="242" y="262" width="84" height="9" rx="4.5"/>
-      <rect x="242" y="292" width="104" height="9" rx="4.5"/>
+    <rect x="216" y="172" width="168" height="232" rx="10" fill="#ffffff" stroke="#c6c6c6" stroke-width="1.6"/>
+    <rect x="226" y="156" width="148" height="34" rx="4" fill="#202020"/>
+    <text x="300" y="171" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">INVALID STANDARD</text>
+    <text x="300" y="184" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">VALUES &amp; METRICS</text>
+    <g font-size="10" fill="#555555">
+      <circle cx="236" cy="212" r="2" fill="#c9ab4f"/>
+      <text x="246" y="215">cultural misreadings in</text>
+      <text x="246" y="229">AI engagement models</text>
+      <circle cx="236" cy="256" r="2" fill="#c9ab4f"/>
+      <text x="246" y="259">feedback misaligned with</text>
+      <text x="246" y="273">instructional coherence</text>
+      <circle cx="236" cy="300" r="2" fill="#c9ab4f"/>
+      <text x="246" y="303">authentic learning beyond</text>
+      <text x="246" y="317">quantifiable metrics</text>
     </g>
   </g>
+  <!-- card 3 -->
   <g>
-    <rect x="410" y="150" width="160" height="180" rx="18" fill="#f8d4da"/>
-    <rect x="418" y="122" width="144" height="52" rx="6" fill="#111417"/>
-    <text x="490" y="144" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">RELATIONAL</text>
-    <text x="490" y="164" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">VALUES</text>
-    <g fill="#e6a9b3">
-      <rect x="432" y="196" width="116" height="9" rx="4.5"/><rect x="432" y="214" width="96" height="9" rx="4.5"/>
-      <rect x="432" y="244" width="116" height="9" rx="4.5"/><rect x="432" y="262" width="84" height="9" rx="4.5"/>
-      <rect x="432" y="292" width="104" height="9" rx="4.5"/>
+    <rect x="408" y="172" width="168" height="232" rx="10" fill="#ffffff" stroke="#c6c6c6" stroke-width="1.6"/>
+    <rect x="418" y="156" width="148" height="34" rx="4" fill="#202020"/>
+    <text x="492" y="171" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">RELATIONAL</text>
+    <text x="492" y="184" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">PEDAGOGICAL VALUES</text>
+    <g font-size="10" fill="#555555">
+      <circle cx="428" cy="212" r="2" fill="#d98d86"/>
+      <text x="438" y="215">predictive profiling vs.</text>
+      <text x="438" y="229">relational trust</text>
+      <circle cx="428" cy="256" r="2" fill="#d98d86"/>
+      <text x="438" y="259">preserving emotional ties</text>
+      <text x="438" y="273">to human oversight</text>
+      <circle cx="428" cy="300" r="2" fill="#d98d86"/>
+      <text x="438" y="303">human intervention for</text>
+      <text x="438" y="317">growth-oriented learning</text>
     </g>
   </g>
 </svg>
