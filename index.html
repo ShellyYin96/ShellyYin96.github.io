@@ -1,682 +1,426 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Yaxuan (Shelly) Yin</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelly Yaxuan Yin</title>
+<meta name="description" content="Shelly Yaxuan Yin — PhD candidate in Information Science at UW–Madison. HCI, Responsible AI, AI evaluation and auditing, knowledge production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2126;
+    --muted:#5c6670;
+    --faint:#8b949c;
+    --accent:#1f6f64;        /* deep pine — a quiet nod to maps & place */
+    --accent-soft:#e7f1ef;
+    --line:#e6e9eb;
+    --badge:#b26a00;
+    --bg:#ffffff;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --serif:'Source Serif 4',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    font-size:15.5px;
+    line-height:1.65;
+  }
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+  a:hover{border-bottom-color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create','UA-103598896-1','auto');
-    ga('send','pageview');
-  </script>
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:56px 28px 80px;
+    display:grid;
+    grid-template-columns:240px 1fr 265px;
+    gap:52px;
+  }
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
+  /* ---------- Sidebar ---------- */
+  .side{position:sticky;top:56px;align-self:start}
+  .side .name{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    line-height:1.5;
+    color:var(--ink);
+  }
+  .side .pron{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--muted);
+    font-size:13.5px;
+    margin-top:6px;
+  }
+  .side .role{margin-top:18px;font-size:14px;color:var(--muted);line-height:1.55}
+  .side .role strong{color:var(--ink);font-weight:600}
+  .side img.portrait{
+    width:100%;
+    max-width:220px;
+    border-radius:6px;
+    margin-top:22px;
+    display:block;
+  }
+  .side .links{margin-top:22px;font-size:14px}
+  .side .links a{display:block;padding:5px 0;color:var(--ink);font-weight:500}
+  .side .links a span{color:var(--accent)}
+  .side .email{margin-top:16px;font-size:13.5px;color:var(--muted);word-break:break-all}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: #1a1a1a;
-      background: #fafaf8;
-      line-height: 1.7;
-    }
+  /* ---------- Main ---------- */
+  main{min-width:0}
 
-    /* Profile header */
-    .profile-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 28px;
-      padding: 36px 0 28px;
-      border-bottom: 1px solid #e8e6e0;
-      margin-bottom: 36px;
-    }
-    .profile-photo {
-      width: 130px;
-      height: 130px;
-      object-fit: cover;
-      border-radius: 8px;
-      flex-shrink: 0;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    }
-    .profile-info { flex: 1; }
-    .profile-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      font-weight: 400;
-      margin: 0 0 4px;
-      line-height: 1.2;
-      color: #111;
-    }
-    .name-clickable {
-      cursor: pointer;
-      border-bottom: 2px dashed #c5bfb0;
-      padding-bottom: 1px;
-      transition: border-color 0.2s;
-    }
-    .name-clickable:hover { border-color: #888; }
+  .market{
+    background:var(--accent-soft);
+    border-left:3px solid var(--accent);
+    border-radius:0 6px 6px 0;
+    padding:14px 18px;
+    font-size:14.5px;
+    margin-bottom:34px;
+  }
+  .market strong{color:var(--accent)}
 
-    #pronunciation-popup {
-      display: none;
-      margin: 8px 0 12px;
-      padding: 9px 16px;
-      background: #fff;
-      border: 1px solid #e0ddd5;
-      border-left: 3px solid #7a9e7e;
-      border-radius: 6px;
-      font-size: 13.5px;
-      color: #444;
-      max-width: fit-content;
-      animation: slideDown 0.18s ease;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .pron-close {
-      margin-left: 12px;
-      cursor: pointer;
-      color: #bbb;
-      font-size: 12px;
-      transition: color 0.15s;
-    }
-    .pron-close:hover { color: #666; }
+  .intro p{margin-bottom:16px;max-width:64ch}
+  .intro .lede{
+    font-family:var(--serif);
+    font-size:18.5px;
+    line-height:1.6;
+  }
+  .threads{margin:0 0 16px;padding:0}
+  .threads li{
+    list-style:none;
+    padding:7px 0 7px 16px;
+    border-left:2.5px solid var(--accent);
+    margin-bottom:8px;
+    font-size:14.5px;
+    line-height:1.6;
+    max-width:64ch;
+  }
+  .threads em{font-style:normal;font-weight:700;color:var(--accent)}
+  .interests{
+    margin-top:6px;
+    font-size:13.5px;
+    color:var(--muted);
+  }
+  .interests em{font-style:normal;color:var(--ink);font-weight:600}
 
-    .profile-meta {
-      font-size: 14px;
-      color: #555;
-      margin: 6px 0 12px;
-      line-height: 1.8;
-    }
-    .profile-meta a { color: #555; }
+  h2{
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin:52px 0 6px;
+  }
+  .rule{border:none;border-top:1px solid var(--line);margin-bottom:20px}
 
-    .social-links { display: flex; gap: 10px; align-items: center; }
-    .social-links a img {
-      width: 22px;
-      height: 22px;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-    .social-links a img:hover { opacity: 1; }
+  /* ---------- News (right rail) ---------- */
+  .newsRail{position:sticky;top:56px;align-self:start}
+  .newsRail h2{margin-top:0}
+  .news li{
+    list-style:none;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:13.5px;
+    line-height:1.55;
+  }
+  .news li:last-of-type{border-bottom:none}
+  .news .date{display:block;color:var(--faint);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+  .news .old{display:none}
+  .news.expanded .old{display:list-item}
+  .newsToggle{
+    background:none;border:none;cursor:pointer;
+    color:var(--accent);font:inherit;font-size:13.5px;font-weight:600;
+    padding:6px 0;margin-top:2px;
+  }
+  .newsToggle:hover{text-decoration:underline}
 
-    /* Section headings */
-    .section-heading {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.35rem;
-      font-weight: 400;
-      color: #111;
-      margin: 40px 0 6px;
-      letter-spacing: 0.01em;
-    }
-    .section-divider {
-      border: none;
-      border-top: 1.5px solid #e8e6e0;
-      margin: 0 0 20px;
-    }
+  /* ---------- Publications ---------- */
 
-    /* Bio */
-    .bio-text {
-      font-size: 14.5px;
-      color: #333;
-      line-height: 1.65;
-      max-width: 720px;
-      margin-bottom: 12px;
-    }
-    .bio-text a { color: #4a7c59; text-decoration: none; border-bottom: 1px solid #b5d4be; transition: border-color 0.2s; }
-    .bio-text a:hover { border-color: #4a7c59; }
+  .pub{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:24px;
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .pub.simple{grid-template-columns:1fr}
+  .thumb .shortname{
+    font-weight:700;font-size:12px;
+    letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink);margin-bottom:8px;line-height:1.4;
+  }
+  .thumb img{width:100%;border:1px solid var(--line);border-radius:6px;display:block;background:#fff}
+  .thumb .ph{
+    display:none;height:118px;
+    border:1.5px dashed var(--line);border-radius:6px;
+    align-items:center;justify-content:center;text-align:center;
+    color:var(--faint);font-size:11px;line-height:1.5;
+    background:#fafbfb;padding:10px;
+  }
+  .pub .title{font-weight:600;font-size:15.5px;line-height:1.45}
+  .pub .meta{font-size:13.5px;color:var(--muted);margin-top:4px}
+  .pub .meta b{color:var(--ink);font-weight:600}
+  .pub .venue{font-size:13.5px;color:var(--ink);font-weight:600;margin-top:3px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pub .badge{
+    display:inline-block;
+    font-size:11.5px;font-weight:700;
+    color:var(--badge);
+    background:#fdf3e3;
+    border-radius:100px;
+    padding:2px 10px;
+    letter-spacing:.02em;
+  }
+  .pub .desc{
+    font-family:var(--serif);font-style:italic;
+    font-size:14px;color:var(--muted);
+    line-height:1.6;margin-top:8px;max-width:62ch;
+  }
+  .pub .plinks{font-size:13.5px;margin-top:8px;color:var(--faint)}
+  .pub .plinks a{font-weight:600}
+  .pub.hidden{display:none}
 
-    /* News */
-    .news-item {
-      display: flex;
-      gap: 14px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f0ede6;
-      font-size: 14px;
-      color: #333;
-      line-height: 1.65;
-    }
-    .news-item:last-child { border-bottom: none; }
-    .news-date {
-      font-size: 11.5px;
-      font-weight: 500;
-      color: #fff;
-      background: #4a7c59;
-      padding: 2px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      height: fit-content;
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-    .news-item a { color: #4a7c59; }
-    #toggle-news-btn {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 13px;
-      color: #888;
-      font-style: italic;
-      cursor: pointer;
-      border: none;
-      background: none;
-      padding: 0;
-      font-family: inherit;
-    }
-    #toggle-news-btn:hover { color: #444; }
+  /* ---------- Awards ---------- */
+  .awards li{
+    list-style:none;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:14px;
+    padding:7px 0;
+    font-size:14.5px;
+  }
+  .awards .yr{color:var(--faint);font-weight:600;font-size:13px;padding-top:1px}
 
-    /* Publication filter */
-    .pub-filter-bar {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-    .pub-filter {
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      border: 1.5px solid #d0cdc5;
-      background: transparent;
-      color: #555;
-    }
-    .pub-filter:hover { border-color: #888; color: #222; }
-    .pub-filter.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
-    .pub-filter.active.dks-btn { background: #2c5f8a; border-color: #2c5f8a; }
-    .pub-filter.active.rai-btn { background: #4a7c59; border-color: #4a7c59; }
+  footer{
+    margin-top:64px;
+    font-size:12.5px;
+    color:var(--faint);
+  }
 
-    /* Publication cards */
-    #pub-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .pub-item {
-      background: #fff;
-      border: 1px solid #e8e6e0;
-      border-radius: 10px;
-      padding: 16px 20px;
-      transition: box-shadow 0.2s;
-    }
-    .pub-item:hover { box-shadow: 0 3px 16px rgba(0,0,0,0.07); }
-    .pub-item.hidden { display: none; }
-
-    .pub-card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
-    .pub-title {
-      font-size: 14.5px;
-      font-weight: 500;
-      color: #111;
-      line-height: 1.55;
-      flex: 1;
-    }
-    .cat-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      padding: 3px 9px;
-      border-radius: 100px;
-      white-space: nowrap;
-      font-weight: 500;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .cat-tag.dks { background: #deeaf5; color: #1e5480; border: 1px solid #b8d3ea; }
-    .cat-tag.rai { background: #dff0e4; color: #2d6640; border: 1px solid #b2d8bc; }
-
-    .pub-authors { font-size: 13px; color: #555; margin: 3px 0; }
-    .pub-venue { font-size: 12.5px; color: #888; font-style: italic; margin: 2px 0 8px; }
-    .pub-award {
-      display: inline-block;
-      font-size: 11.5px;
-      background: #fff8e1;
-      color: #8a6500;
-      border: 1px solid #f0dc8a;
-      border-radius: 4px;
-      padding: 2px 8px;
-      margin-bottom: 7px;
-    }
-    .pub-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-    .pub-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      padding: 4px 11px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.15s;
-      border: 1px solid;
-    }
-    .pub-link.source { color: #2c5f8a; border-color: #b3cfea; background: #f0f6fc; }
-    .pub-link.source:hover { background: #ddeaf7; border-color: #2c5f8a; }
-    .pub-link.pdf { color: #c0392b; border-color: #f0b8b3; background: #fdf3f2; }
-    .pub-link.pdf:hover { background: #fde0dc; border-color: #c0392b; }
-    .pub-link.soon { color: #aaa; border-color: #e0e0e0; background: #f8f8f8; cursor: default; font-style: italic; }
-
-    /* Poster list */
-    .poster-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .poster-item {
-      background: #fff;
-      border: 1px solid #e8e6e0;
-      border-radius: 10px;
-      padding: 14px 18px;
-    }
-
-    /* Awards */
-    .award-list { list-style: none; padding: 0; margin: 0; }
-    .award-item {
-      display: flex;
-      gap: 14px;
-      padding: 8px 0;
-      font-size: 14px;
-      color: #333;
-      border-bottom: 1px solid #f0ede6;
-    }
-    .award-item:last-child { border-bottom: none; }
-    .award-year {
-      font-size: 11.5px;
-      font-weight: 500;
-      color: #fff;
-      background: #888;
-      padding: 2px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      height: fit-content;
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-    .award-item a { color: #333; text-decoration: none; border-bottom: 1px dotted #aaa; }
-    .award-item a:hover { border-bottom-color: #333; }
-
-    @media (max-width: 600px) {
-      .profile-header { flex-direction: column; }
-      .profile-photo { width: 100px; height: 100px; }
-      .pub-card-top { flex-direction: column; gap: 6px; }
-      .research-cards { grid-template-columns: 1fr !important; }
-    }
-  </style>
+  /* ---------- Responsive ---------- */
+  @media (max-width:1080px){
+    .wrap{grid-template-columns:230px 1fr;gap:44px}
+    .newsRail{grid-column:1 / -1;position:static;order:3}
+  }
+  @media (max-width:780px){
+    .wrap{grid-template-columns:1fr;gap:36px;padding:36px 20px 64px}
+    .side{position:static}
+    .side img.portrait{max-width:170px}
+    .pub{grid-template-columns:1fr;gap:12px}
+    .thumb img,.thumb .ph{max-width:230px}
+  }
+</style>
 </head>
-
 <body>
+<div class="wrap">
 
-  <div class="content-container">
-    <div class="content">
-      <div class="content-table flex-column">
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="side">
+    <div class="name">Shelly<br>Yaxuan Yin</div>
+    <div class="pron">Yah-shwen · /jɑ.ɕɥɛn/ · correct pronunciation is optional 😊</div>
+    <div class="role">
+      <strong>PhD Candidate</strong><br>
+      Information Science<br>
+      University of Wisconsin–Madison
+    </div>
+    <img class="portrait" src="https://shellyyin96.github.io/img/7741771957873_.pic.jpg" alt="Portrait of Shelly Yaxuan Yin">
+    <nav class="links" aria-label="Profile links">
+      <a href="paper/Yin_CV.pdf">Curriculum Vitae <span>→</span></a>
+      <a href="https://scholar.google.com/citations?user=cOy7544AAAAJ&hl=en">Google Scholar <span>→</span></a>
+      <a href="https://www.linkedin.com/in/yaxuanyin/">LinkedIn <span>→</span></a>
+      <a href="https://x.com/Yaxuan_Yin">Twitter / X <span>→</span></a>
+    </nav>
+    <div class="email">yaxuan.yin@wisc.edu</div>
+  </aside>
 
-        <!-- Profile Header -->
-        <div class="profile-header">
-          <img class="profile-photo" src="img/7741771957873_.pic.jpg" alt="Yaxuan Yin">
-          <div class="profile-info">
-            <h1 class="profile-name">
-              Yaxuan (Shelly) Yin
-              <button onclick="speakName()" title="Click to hear pronunciation" style="background:none; border:none; cursor:pointer; padding: 0 0 0 6px; vertical-align: middle; font-size: 1rem; opacity: 0.6; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">🔊</button>
-            </h1>
-            <div style="font-size: 13.5px; color: #777; margin: 2px 0 10px; font-style: italic;">
-              Yah-shwen &nbsp;<span style="color:#bbb;">·</span>&nbsp; <span style="color:#aaa; font-size:12px;">/jɑ.ɕɥɛn/</span> &nbsp;<span style="color:#bbb;">·</span>&nbsp; correct pronunciation is optional 😊
-            </div>
-            <div class="profile-meta">
-              PhD Candidate &nbsp;·&nbsp; Information Science<br>
-              University of Wisconsin–Madison<br>
-              <a href="mailto:yaxuan.yin@wisc.edu">yaxuan.yin@wisc.edu</a>
-            </div>
-            <div class="social-links">
-              <a href="https://www.linkedin.com/in/yaxuanyin/" target="_blank"><img src="img/linkedin_icon.png" alt="LinkedIn"></a>
-              <a href="https://scholar.google.com/citations?user=cOy7544AAAAJ&hl=en" target="_blank"><img src="img/google_scholar_icon.png" alt="Google Scholar"></a>
-              <a href="https://x.com/Yaxuan_Yin" target="_blank"><img src="img/twitter_icon.jpg" alt="X / Twitter"></a>
-            </div>
-          </div>
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <div class="market">
+      🔍 <strong>On the job market!</strong> I'm seeking research positions in HCI, Responsible AI, and AI evaluation &amp; auditing, in both academia and industry. <a href="mailto:yaxuan.yin@wisc.edu">Get in touch</a>.
+    </div>
+
+    <section class="intro">
+      <p class="lede">I build evaluation infrastructure that puts communities in control of AI: methods and tools that let the people affected by AI systems define, measure, and audit what counts as good performance.</p>
+
+      <ul class="threads">
+        <li><em>Infrastructure &amp; Behavior</em> · quantitative work using causal inference to understand how infrastructures such as broadband and LLMs shape human behavior and knowledge gaps on Wikipedia and OpenStreetMap</li>
+        <li><em>Stakeholder AI Evaluation</em> · mixed-methods work building tools that let stakeholders audit and evaluate AI in their own contexts</li>
+      </ul>
+
+      <p>I publish at CHI, CSCW, FAccT, AIED, and CSCL. I'm a member of the <a href="https://collab.ischool.wisc.edu/">Collaborative Computing Group (MadCollab)</a>, advised by <a href="https://ischool.wisc.edu/staff/thebault-spieker-jacob/">Dr. Jacob Thebault-Spieker</a>, and I collaborate with <a href="https://shamya.github.io/">Dr. Shamya Karumbaiah</a> in the <a href="https://trail.wcer.wisc.edu/">Responsible AI for Learning (TRAIL) Lab</a>. Before my PhD, I earned an M.S. in Urban Data Science from New York University.</p>
+
+      <p class="interests"><em>Research interests:</em> human-computer interaction · responsible AI · AI evaluation &amp; auditing · computational social science · peer production</p>
+    </section>
+
+    <!-- ================= PUBLICATIONS ================= -->
+    <h2>Selected Publications</h2>
+    <hr class="rule">
+    <div id="pubList">
+
+      <div class="pub" data-cat="rai">
+        <div class="thumb">
+          <div class="shortname">Teacher Repair Work</div>
+          <img src="img/pubs/facct26_repair.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">add figure:<br>img/pubs/facct26_repair.png</div>
         </div>
-
-        <div class="flex-row">
-          <div class="flex-item flex-column">
-
-            <!-- Biography -->
-            <p class="bio-text" style="font-style: normal;">👋 Hi, I'm Yaxuan (Shelly). I am a Ph.D. candidate in Information Science at the University of Wisconsin–Madison. I am a member of the <a href="https://collab.ischool.wisc.edu/" target="_blank">Collaborative Computing Group (MadCollab)</a> where I am advised by <a href="https://ischool.wisc.edu/staff/thebault-spieker-jacob/" target="_blank">Dr. Jacob Thebault-Spieker</a>. I also collaborate with <a href="https://shamya.github.io/" target="_blank">Dr. Shamya Karumbaiah</a> in the <a href="https://trail.wcer.wisc.edu/" target="_blank">Responsible AI for Learning (TRAIL) Lab</a> within the Department of Educational Psychology. Before beginning my Ph.D., I earned an M.S. in Urban Data Science from New York University.
-           <p class="bio-text">My research has two complementary directions. First, I investigate how sociotechnical infrastructures (e.g., broadband connectivity, coordination systems, and large language models) shape knowledge production and knowledge gaps in online collaborative communities. Second, I study Responsible AI in education by designing methods and tools that help educators understand, audit, and shape AI systems through participatory and human centered approaches.</p>
-            <!-- News -->
-            <h2 class="section-heading">News</h2>
-            <hr class="section-divider">
-            <div id="recent-news">
-              <div class="news-item">
-                <span class="news-date">May 2026</span>
-                <span>Two papers accepted to #FAccT2026 and #CHIWORK2026! Excited to contribute to the ongoing conversation on Responsible AI in Education, huge thanks to the amazing team! 🎉</span>
-              </div>
-              <div class="news-item">
-                <span class="news-date">Apr 2026</span>
-                <span>Our <a href="paper/CHI2026_Broadband.pdf" target="_blank">paper</a> "Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia" has been accepted to #CHI2026! ¡Nos vemos en Barcelona! 🇪🇸</span>
-              </div>
-              <div class="news-item">
-                <span class="news-date">Apr 2025</span>
-                <span>Our <a href="paper/FAccT2025_RAI.pdf" target="_blank">paper</a> "Responsible AI in Education: Understanding Teachers' Priorities and Contextual Challenges" has been accepted to #FAccT2025! Honored to contribute to the growing dialogue on values, context, and ethics in AI.</span>
-              </div>
-            </div>
-            <button id="toggle-news-btn" onclick="toggleNews()">View past news</button>
-            <div id="old-news" style="display:none; margin-top:6px;">
-              <div class="news-item">
-                <span class="news-date">Apr 2025</span>
-                <span>Our <a href="paper/AIED2025_AIBAT.pdf" target="_blank">paper</a> "AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education" has been accepted to #AIED2025!</span>
-              </div>
-              <div class="news-item">
-                <span class="news-date">Mar 2025</span>
-                <span>Our <a href="paper/CSCL25_RAI.pdf" target="_blank">paper</a> "Toward Teacher‐Centered AI Design" has been accepted for #CSCL2025. Huge thanks to my amazing and supportive collaborators!</span>
-              </div>
-              <div class="news-item">
-                <span class="news-date">Oct 2024</span>
-                <span>Attending #CSCW2024 to present our <a href="paper/CSCW24_productivity_vs_equity.pdf" target="_blank">paper</a> and <a href="paper/CSCW24_Reddit.pdf" target="_blank">extended abstract</a>! See you in San José, Costa Rica 🦜</span>
-              </div>
-              <div class="news-item">
-                <span class="news-date">Sep 2024</span>
-                <span>Starting the <a href="https://univercity.wisc.edu/2024/09/23/univercity-alliance-celebrates-partnerships-across-wisconsin/" target="_blank">UniverCity Alliance project</a> with Iowa County and the Southwestern Wisconsin Regional Planning Commission.</span>
-              </div>
-              <div class="news-item">
-                <span class="news-date">Sep 2024</span>
-                <span>Two full papers accepted to #CSCW2025, both as first author! Excited to present in Bergen, Norway 🇳🇴</span>
-              </div>
-              <div class="news-item">
-                <span class="news-date">Nov 2023</span>
-                <span>My first-ever <a href="https://dl.acm.org/doi/abs/10.1145/3637390" target="_blank">paper</a> as first author accepted to #CSCW2024 after a long revision journey! 🎉 Huge thanks to my amazing mentee @Longjie and my great advisor.</span>
-              </div>
-            </div>
-
-            <!-- Publications -->
-            <h2 class="section-heading">Publications</h2>
-            <hr class="section-divider">
-
-            <div class="pub-filter-bar">
-              <button class="pub-filter active" onclick="filterPubs('all', this)">All</button>
-              <button class="pub-filter dks-btn" onclick="filterPubs('dks', this)">Knowledge Production</button>
-              <button class="pub-filter rai-btn" onclick="filterPubs('rai', this)">Responsible AI in Education</button>
-            </div>
-
-            <ol id="pub-list">
-
-              <li class="pub-item" data-cat="dks" data-year="2024" data-first="true">
-                <div class="pub-card-top">
-                  <div class="pub-title">Productivity or Equality? Tradeoffs in Volunteer Microtasking in Humanitarian OpenStreetMap</div>
-                  <span class="cat-tag dks">Knowledge Production</span>
-                </div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Longjie Guo, Jacob Thebault-Spieker</div>
-                <div class="pub-venue">ACM CSCW 2024</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://dl.acm.org/doi/abs/10.1145/3637390" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/CSCW24_productivity_vs_equity.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="dks" data-year="2025" data-first="true">
-                <div class="pub-card-top">
-                  <div class="pub-title">The Effect of Population Density on Remote Humanitarian Mapping Activities: A Triple‑Difference Analysis</div>
-                  <span class="cat-tag dks">Knowledge Production</span>
-                </div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
-                <div class="pub-venue">ACM CSCW 2025</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://dl.acm.org/doi/10.1145/3710916" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/CSCW25_The Effect of Population Density.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="dks" data-year="2025" data-first="true">
-                <div class="pub-card-top">
-                  <div class="pub-title">Beyond "Geo" HCI: Exploring Cultural Dimensions of Disparity in OpenStreetMap Road Safety Metadata</div>
-                  <span class="cat-tag dks">Knowledge Production</span>
-                </div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
-                <div class="pub-venue">ACM CSCW 2025</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://dl.acm.org/doi/10.1145/3772318.3790903" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/CSCW2025_Beyond_GeoHCI.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="dks" data-year="2026" data-first="true">
-                <div class="pub-card-top">
-                  <div class="pub-title">Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia</div>
-                  <span class="cat-tag dks">Knowledge Production</span>
-                </div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
-                <div class="pub-venue">ACM CHI 2026</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://doi.org/10.1145/3772318.3790903" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/CHI2026_Broadband.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="rai" data-year="2025" data-first="true">
-                <div class="pub-card-top">
-                  <div class="pub-title">Toward Teacher‐Centered AI Design: Exploring the Role of Pedagogical Values and Contextual Factors in K‐12 Teachers' Perceptions of Responsible AI</div>
-                  <span class="cat-tag rai">Responsible AI in Education</span>
-                </div>
-                <div class="pub-award">🏅 Best Paper Nomination</div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Ju Lim, Shona Acquaye, Sara Schwartz</div>
-                <div class="pub-venue">CSCL 2025</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://doi.org/10.22318/cscl2025.817482" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/CSCL25_RAI.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="rai" data-year="2025" data-first="false">
-                <div class="pub-card-top">
-                  <div class="pub-title">AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education</div>
-                  <span class="cat-tag rai">Responsible AI in Education</span>
-                </div>
-                <div class="pub-award">🏅 Best Paper Nomination</div>
-                <div class="pub-authors">Shamya Karumbaiah, <strong>Yaxuan Yin</strong>, Aayush Bharadwaj</div>
-                <div class="pub-venue">AIED 2025</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://link.springer.com/chapter/10.1007/978-3-031-98414-3_5" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/AIED2025_AIBAT.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="rai" data-year="2025" data-first="true">
-                <div class="pub-card-top">
-                  <div class="pub-title">Responsible AI in Education: Understanding Teachers' Priorities and Contextual Challenges</div>
-                  <span class="cat-tag rai">Responsible AI in Education</span>
-                </div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Shona Acquaye</div>
-                <div class="pub-venue">ACM FAccT 2025</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://doi.org/10.1145/3715275.3732176" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/FAccT2025_RAI.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="rai" data-year="2026" data-first="false">
-                <div class="pub-card-top">
-                  <div class="pub-title">Empowering Teachers to Design AI Roles for Work: An Empirical Study of Teachers' AI Role Design Practices</div>
-                  <span class="cat-tag rai">Responsible AI in Education</span>
-                </div>
-                <div class="pub-authors">Yujin Kim, <strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Devansh Saxena</div>
-                <div class="pub-venue">CHIWORK 2026</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://dl.acm.org/doi/10.1145/3808045.3808094" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/CHIWork26_Role.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="rai" data-year="2026" data-first="false">
-                <div class="pub-card-top">
-                  <div class="pub-title">What Constitutes AI Harms and/or Unfairness? An Empirical Analysis of Teacher Deliberation with a Fairness Elicitation Scaffold</div>
-                  <span class="cat-tag rai">Responsible AI in Education</span>
-                </div>
-                <div class="pub-authors">Shamya Karumbaiah, <strong>Yaxuan Yin</strong>, Harry Brighouse</div>
-                <div class="pub-venue">AIED 2026</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://link.springer.com/chapter/10.1007/978-3-032-29773-0_19" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/AIED26_Unfairness_Harms.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-              <li class="pub-item" data-cat="rai" data-year="2026" data-first="true">
-                <div class="pub-card-top">
-                  <div class="pub-title">When AI Breaks, Teachers Repair: Pedagogical Repair Work in Situated Classroom Practice</div>
-                  <span class="cat-tag rai">Responsible AI in Education</span>
-                </div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong>, Shamya Karumbaiah, Yujin Kim, Devansh Saxena</div>
-                <div class="pub-venue">ACM FAccT 2026</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://doi.org/10.1145/3805689.3812281" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/FAccT2026_RAI_Education.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-
-            </ol>
-
-            <!-- Posters & Workshop Papers -->
-            <h2 class="section-heading">Posters, Works-in-Progress & Workshop Papers</h2>
-            <hr class="section-divider">
-            <ol class="poster-list">
-              <li class="poster-item">
-                <div class="pub-title">Understanding Perceptions of the Reddit Reaction Mechanism in Political Subreddits</div>
-                <div class="pub-authors">Longjie Guo, <strong>Yaxuan Yin</strong>, Jacob Thebault-Spieker</div>
-                <div class="pub-venue">ACM CSCW 2024 — Extended Abstract</div>
-                <div class="pub-links">
-                  <a class="pub-link source" href="https://dl.acm.org/doi/10.1145/3678884.3681861" target="_blank">↗ Source</a>
-                  <a class="pub-link pdf" href="paper/CSCW24_Reddit.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-              <li class="poster-item">
-                <div class="pub-title">Redefining Value: Wikipedia's Role in Dataset Governance for Foundation Models</div>
-                <div class="pub-authors"><strong>Yaxuan Yin</strong></div>
-                <div class="pub-venue">ACM CSCW 2025 — Workshop Paper</div>
-                <div class="pub-links">
-                  <span class="pub-link soon">↗ Source coming soon</span>
-                  <a class="pub-link pdf" href="paper/CSCW25_Value_Workshop.pdf" target="_blank">⤓ Full PDF</a>
-                </div>
-              </li>
-            </ol>
-
-            <!-- Awards -->
-            <h2 class="section-heading">Awards, Fellowships & Grants</h2>
-            <hr class="section-divider">
-            <ul class="award-list">
-              <li class="award-item">
-                <span class="award-year">2025</span>
-                <div>
-                  Best Paper Nomination — AIBAT @ AIED 2025
-                  &nbsp;<a href="https://link.springer.com/chapter/10.1007/978-3-031-98414-3_5" target="_blank" style="font-size:11.5px; padding:2px 8px; border-radius:4px; border:1px solid #b3cfea; background:#f0f6fc; color:#2c5f8a; text-decoration:none; white-space:nowrap;">↗ Paper</a>
-                </div>
-              </li>
-              <li class="award-item">
-                <span class="award-year">2025</span>
-                <div>
-                  Best Paper Nomination — Responsible AI in Education @ CSCL 2025
-                  &nbsp;<a href="https://doi.org/10.22318/cscl2025.817482" target="_blank" style="font-size:11.5px; padding:2px 8px; border-radius:4px; border:1px solid #b3cfea; background:#f0f6fc; color:#2c5f8a; text-decoration:none; white-space:nowrap;">↗ Paper</a>
-                </div>
-              </li>
-
-              <li class="award-item">
-                <span class="award-year">2025</span>
-                <div>Lambda's Research Grant</div>
-              </li>
-
-              <li class="award-item">
-                <span class="award-year">2024</span>
-                <div>
-                  <a href="https://univercity.wisc.edu/2024/09/03/univercity-alliance-scholars-partner-with-wisconsin-communities-to-work-on-local-priorities/" target="_blank">UniverCity Alliance Scholars</a>
-                </div>
-              </li>
-              <li class="award-item">
-                <span class="award-year">2024</span>
-                <div>
-                  Graduate Fellows
-                  <div style="font-size:12.5px; color:#888; margin-top:1px;">The Institute for Diversity Science, UW–Madison</div>
-                </div>
-              </li>
-              <li class="award-item">
-                <span class="award-year">2022</span>
-                <div>
-                  Fellow Researcher
-                  <div style="font-size:12.5px; color:#888; margin-top:1px;">Center for Advancing Safety of Machine Intelligence, Northwestern University</div>
-                </div>
-              </li>
-              <li class="award-item">
-                <span class="award-year">2022</span>
-                <div>
-                  Google Computer Science Research Mentorship
-                  <div style="font-size:12.5px; color:#888; margin-top:1px;">Google</div>
-                </div>
-              </li>
-            </ul>
-
-          </div>
+        <div>
+          <div class="title">When AI Breaks, Teachers Repair: Pedagogical Repair Work in Situated Classroom Practice</div>
+          <div class="meta"><b>Yaxuan Yin</b>, Shamya Karumbaiah, Yujin Kim, Devansh Saxena</div>
+          <div class="venue">ACM FAccT 2026</div>
+          <div class="desc">What happens when classroom AI breaks down? We document the pedagogical repair work teachers perform to keep AI-supported instruction running, and argue that this often invisible labor should reshape how educational AI is designed and evaluated.</div>
+          <div class="plinks"><a href="https://doi.org/10.1145/3805689.3812281">doi</a> · <a href="paper/FAccT2026_RAI_Education.pdf">pdf</a></div>
         </div>
+      </div>
 
+      <div class="pub" data-cat="kp">
+        <div class="thumb">
+          <div class="shortname">Broadband × Wikipedia</div>
+          <img src="img/pubs/chi26_broadband.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">add figure:<br>img/pubs/chi26_broadband.png</div>
+        </div>
+        <div>
+          <div class="title">Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia</div>
+          <div class="meta"><b>Yaxuan Yin</b>, Jacob Thebault-Spieker</div>
+          <div class="venue">ACM CHI 2026</div>
+          <div class="desc">Does broadband access translate into online participation? Linking broadband connectivity to contributor dynamics on Wikipedia, we show that the benefits of access are contextual, shaped by who contributes, and from where.</div>
+          <!-- TODO: replace # with the correct CHI 2026 DOI -->
+          <div class="plinks"><a href="#">doi</a> · <a href="paper/CHI2026_Broadband.pdf">pdf</a></div>
+        </div>
+      </div>
+
+      <div class="pub" data-cat="rai">
+        <div class="thumb">
+          <div class="shortname">Teachers' Priorities</div>
+          <img src="img/pubs/facct25_priorities.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">add figure:<br>img/pubs/facct25_priorities.png</div>
+        </div>
+        <div>
+          <div class="title">Responsible AI in Education: Understanding Teachers' Priorities and Contextual Challenges</div>
+          <div class="meta"><b>Yaxuan Yin</b>, Shamya Karumbaiah, Shona Acquaye</div>
+          <div class="venue">ACM FAccT 2025 <span class="badge">🏅 Best Paper Nomination</span></div>
+          <div class="desc">What does responsible AI mean to the teachers expected to use it? We examine teachers' priorities for responsible AI and the contextual challenges that determine whether those priorities can be realized in practice.</div>
+          <div class="plinks"><a href="https://doi.org/10.1145/3715275.3732176">doi</a> · <a href="paper/FAccT2025_RAI.pdf">pdf</a></div>
+        </div>
+      </div>
+
+      <div class="pub" data-cat="rai">
+        <div class="thumb">
+          <div class="shortname">AIBAT</div>
+          <img src="img/pubs/aied25_aibat.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">add figure:<br>img/pubs/aied25_aibat.png</div>
+        </div>
+        <div>
+          <div class="title">AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education</div>
+          <div class="meta">Shamya Karumbaiah, <b>Yaxuan Yin</b>, Aayush Bharadwaj</div>
+          <div class="venue">AIED 2025 <span class="badge">🏅 Best Paper Nomination</span></div>
+          <div class="desc">Can teachers evaluate LLMs on their own terms? AIBAT is an audit tool supporting teacher-driven, contextual evaluation of language models in education, putting the criteria for "good" AI behavior in educators' hands.</div>
+          <div class="plinks"><a href="https://link.springer.com/chapter/10.1007/978-3-031-98414-3_5">doi</a> · <a href="paper/AIED2025_AIBAT.pdf">pdf</a></div>
+        </div>
+      </div>
+
+      <div class="pub" data-cat="rai">
+        <div class="thumb">
+          <div class="shortname">Teacher-Centered AI</div>
+          <img src="img/pubs/cscl25_teacher.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">add figure:<br>img/pubs/cscl25_teacher.png</div>
+        </div>
+        <div>
+          <div class="title">Toward Teacher-Centered AI Design: Exploring the Role of Pedagogical Values and Contextual Factors in K-12 Teachers' Perceptions of Responsible AI</div>
+          <div class="meta"><b>Yaxuan Yin</b>, Shamya Karumbaiah, Ju Lim, Shona Acquaye, Sara Schwartz</div>
+          <div class="venue">CSCL 2025 <span class="badge">🏅 Best Paper Nomination</span></div>
+          <div class="desc">How do pedagogical values and classroom context shape what K-12 teachers see as responsible AI? Our findings motivate teacher-centered approaches to designing AI for education.</div>
+          <div class="plinks"><a href="https://doi.org/10.22318/cscl2025.817482">doi</a> · <a href="paper/CSCL25_RAI.pdf">pdf</a></div>
+        </div>
+      </div>
+
+      <div class="pub" data-cat="kp">
+        <div class="thumb">
+          <div class="shortname">Population Density</div>
+          <img src="img/pubs/cscw25_density.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">add figure:<br>img/pubs/cscw25_density.png</div>
+        </div>
+        <div>
+          <div class="title">The Effect of Population Density on Remote Humanitarian Mapping Activities: A Triple-Difference Analysis</div>
+          <div class="meta"><b>Yaxuan Yin</b>, Jacob Thebault-Spieker</div>
+          <div class="venue">ACM CSCW 2025</div>
+          <div class="desc">Where does remote humanitarian mapping actually happen? A triple-difference analysis of how population density shapes volunteer mapping activity in humanitarian OpenStreetMap.</div>
+          <div class="plinks"><a href="https://dl.acm.org/doi/10.1145/3710916">doi</a> · <a href="paper/CSCW25_PopulationDensity.pdf">pdf</a></div>
+        </div>
+      </div>
+
+      <div class="pub" data-cat="kp">
+        <div class="thumb">
+          <div class="shortname">Productivity vs. Equality</div>
+          <img src="img/pubs/cscw24_tradeoffs.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph">add figure:<br>img/pubs/cscw24_tradeoffs.png</div>
+        </div>
+        <div>
+          <div class="title">Productivity or Equality? Tradeoffs in Volunteer Microtasking in Humanitarian OpenStreetMap</div>
+          <div class="meta"><b>Yaxuan Yin</b>, Longjie Guo, Jacob Thebault-Spieker</div>
+          <div class="venue">ACM CSCW 2024</div>
+          <div class="desc">Microtasking makes volunteer mapping more productive, but at what cost? We identify tradeoffs between productivity and equality in humanitarian OpenStreetMap, showing how task design shapes whose places get mapped.</div>
+          <div class="plinks"><a href="https://dl.acm.org/doi/abs/10.1145/3637390">doi</a> · <a href="paper/CSCW24_productivity_vs_equity.pdf">pdf</a></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    function speakName() {
-      if ('speechSynthesis' in window) {
-        var u = new SpeechSynthesisUtterance('Yah shwen');
-        u.lang = 'en-US';
-        u.rate = 0.85;
-        window.speechSynthesis.speak(u);
-      }
-    }
-    function toggleNews() {
-      var news = document.getElementById('old-news');
-      var btn  = document.getElementById('toggle-news-btn');
-      if (news.style.display === 'none') {
-        news.style.display = 'block';
-        btn.textContent = 'Hide older news';
-      } else {
-        news.style.display = 'none';
-        btn.textContent = 'View past news';
-      }
-    }
-    function sortPubsByYear() {
-      var list = document.getElementById('pub-list');
-      var items = Array.from(list.querySelectorAll('.pub-item'));
-      items.sort(function(a, b) {
-        var yearDiff = parseInt(b.dataset.year) - parseInt(a.dataset.year);
-        if (yearDiff !== 0) return yearDiff;
-        var aFirst = a.dataset.first === 'true' ? 0 : 1;
-        var bFirst = b.dataset.first === 'true' ? 0 : 1;
-        return aFirst - bFirst;
-      });
-      items.forEach(function(item) { list.appendChild(item); });
-    }
+    <!-- ================= AWARDS ================= -->
+    <h2>Awards, Fellowships &amp; Grants</h2>
+    <hr class="rule">
+    <ul class="awards">
+      <li><span class="yr">2025</span><span>Best Paper Nomination — AIBAT @ AIED 2025</span></li>
+      <li><span class="yr">2025</span><span>Best Paper Nomination — Responsible AI in Education @ CSCL 2025</span></li>
+      <li><span class="yr">2025</span><span>Lambda's Research Grant</span></li>
+      <li><span class="yr">2024</span><span><a href="https://univercity.wisc.edu/2024/09/03/univercity-alliance-scholars-partner-with-wisconsin-communities-to-work-on-local-priorities/">UniverCity Alliance Scholars</a></span></li>
+      <li><span class="yr">2024</span><span>Graduate Fellow, The Institute for Diversity Science, UW–Madison</span></li>
+      <li><span class="yr">2022</span><span>Fellow Researcher, Center for Advancing Safety of Machine Intelligence, Northwestern University</span></li>
+      <li><span class="yr">2022</span><span>Google Computer Science Research Mentorship, Google</span></li>
+    </ul>
 
-    function filterPubs(cat, btn) {
-      document.querySelectorAll('.pub-filter').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      document.querySelectorAll('.pub-item').forEach(function(item) {
-        item.classList.toggle('hidden', cat !== 'all' && item.dataset.cat !== cat);
-      });
-    }
+    <footer>© 2026 Shelly Yaxuan Yin · also published as Yaxuan Yin · built with plain HTML, hosted on GitHub Pages</footer>
 
-    sortPubsByYear();
-  </script>
+  </main>
+
+  <!-- ================= NEWS RAIL ================= -->
+  <aside class="newsRail" aria-label="News">
+    <h2>News</h2>
+    <hr class="rule">
+    <ul class="news" id="newsList">
+      <li><span class="date">May 2026</span>Two papers accepted to <b>#FAccT2026</b> and <b>#CHIWORK2026</b>! Excited to contribute to the ongoing conversation on Responsible AI in Education 🎉</li>
+      <li><span class="date">Apr 2026</span>Our <a href="paper/CHI2026_Broadband.pdf">paper</a> "Beyond Access: Contextualizing the Benefits of Broadband through Contributor Dynamics on Wikipedia" accepted to <b>#CHI2026</b>! ¡Nos vemos en Barcelona! 🇪🇸</li>
+      <li><span class="date">Apr 2025</span>Our <a href="paper/FAccT2025_RAI.pdf">paper</a> "Responsible AI in Education: Understanding Teachers' Priorities and Contextual Challenges" accepted to <b>#FAccT2025</b>!</li>
+      <li class="old"><span class="date">Apr 2025</span>Our <a href="paper/AIED2025_AIBAT.pdf">paper</a> "AIBAT: AI Behavior Analysis Tool for Teacher-Driven Contextual Evaluation of Language Models in Education" accepted to <b>#AIED2025</b>!</li>
+      <li class="old"><span class="date">Mar 2025</span>Our <a href="paper/CSCL25_RAI.pdf">paper</a> "Toward Teacher-Centered AI Design" accepted for <b>#CSCL2025</b>. Huge thanks to my collaborators!</li>
+      <li class="old"><span class="date">Oct 2024</span>Attending <b>#CSCW2024</b> to present our <a href="paper/CSCW24_productivity_vs_equity.pdf">paper</a> and <a href="paper/CSCW24_Reddit.pdf">extended abstract</a>! See you in San José, Costa Rica 🦜</li>
+      <li class="old"><span class="date">Sep 2024</span>Starting the <a href="https://univercity.wisc.edu/2024/09/23/univercity-alliance-celebrates-partnerships-across-wisconsin/">UniverCity Alliance project</a> with Iowa County and the Southwestern Wisconsin Regional Planning Commission.</li>
+      <li class="old"><span class="date">Sep 2024</span>Two full papers accepted to <b>#CSCW2025</b>, both as first author! Excited to present in Bergen, Norway 🇳🇴</li>
+      <li class="old"><span class="date">Nov 2023</span>My first-ever <a href="https://dl.acm.org/doi/abs/10.1145/3637390">paper</a> as first author accepted to <b>#CSCW2024</b> after a long revision journey! 🎉</li>
+    </ul>
+    <button class="newsToggle" id="newsToggle" aria-expanded="false">View past news ↓</button>
+  </aside>
+</div>
+
+<script>
+  // News toggle
+  const newsList = document.getElementById('newsList');
+  const newsToggle = document.getElementById('newsToggle');
+  newsToggle.addEventListener('click', () => {
+    const open = newsList.classList.toggle('expanded');
+    newsToggle.textContent = open ? 'Hide past news ↑' : 'View past news ↓';
+    newsToggle.setAttribute('aria-expanded', open);
+  });
+
+</script>
 </body>
 </html>
