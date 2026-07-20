@@ -155,15 +155,15 @@
 
   .pub{
     display:grid;
-    grid-template-columns:200px 1fr;
-    gap:26px;
-    padding:28px 0;
+    grid-template-columns:140px 1fr;
+    gap:24px;
+    padding:26px 0;
     border-bottom:1px solid var(--line);
   }
   .pub.simple{grid-template-columns:1fr}
   .thumb img{width:100%;border:1px solid var(--line);border-radius:6px;display:block;background:#fff}
   .thumb .ph{
-    display:none;height:118px;
+    display:none;height:84px;
     border:1.5px dashed var(--line);border-radius:6px;
     align-items:center;justify-content:center;text-align:center;
     color:var(--faint);font-size:11px;line-height:1.5;
@@ -218,7 +218,7 @@
     .side{position:static}
     .side img.portrait{max-width:170px}
     .pub{grid-template-columns:1fr;gap:12px}
-    .thumb img,.thumb .ph{max-width:230px}
+    .thumb img,.thumb .ph{max-width:180px}
   }
 </style>
 </head>
@@ -229,7 +229,7 @@
   <aside class="side">
     <div class="name">Shelly<br>Yaxuan Yin</div>
     <div class="pron">Yah-shwen · /jɑ.ɕɥɛn/
-      <button class="say" aria-label="Hear how to pronounce Yaxuan" title="Hear my name" onclick="document.getElementById('nameAudio').play()">🔊</button><br>
+      <button class="say" id="sayBtn" aria-label="Hear how to pronounce Yaxuan" title="Hear my name">🔊</button><br>
       correct pronunciation is optional 😊</div>
     <!-- TODO: put your pronunciation audio file at audio/pronunciation.mp3 (or edit the src below) -->
     <audio id="nameAudio" src="audio/pronunciation.mp3" preload="none"></audio>
@@ -409,6 +409,18 @@
 </div>
 
 <script>
+  // Pronunciation button: play recording if present, else speak the phonetic name
+  document.getElementById('sayBtn').addEventListener('click', () => {
+    const audio = document.getElementById('nameAudio');
+    audio.play().catch(() => {
+      if ('speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance('Yah shwen');
+        u.rate = 0.85;
+        speechSynthesis.speak(u);
+      }
+    });
+  });
+
   // News toggle
   const newsList = document.getElementById('newsList');
   const newsToggle = document.getElementById('newsToggle');
