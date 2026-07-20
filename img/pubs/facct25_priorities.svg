@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" font-family="Inter,-apple-system,Segoe UI,sans-serif">
+  <rect width="600" height="360" fill="#ffffff"/>
+  <!-- teacher -->
+  <circle cx="90" cy="150" r="24" fill="#9ccdb0"/>
+  <path d="M 90 174 Q 58 190 58 238 L 122 238 Q 122 190 90 174 Z" fill="#9ccdb0"/>
+  <text x="90" y="268" font-size="14" font-weight="700" fill="#3c6e54" text-anchor="middle">TEACHERS</text>
+  <path d="M 140 190 L 190 190" stroke="#9aa2aa" stroke-width="3" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9aa2aa"/></marker></defs>
+  <!-- values survey card -->
+  <rect x="205" y="70" width="180" height="220" rx="12" fill="#f0edfb" stroke="#c9c0ee" stroke-width="2"/>
+  <text x="295" y="100" font-size="14" font-weight="700" fill="#4b4370" text-anchor="middle">VALUE ELICITATION</text>
+  <g font-size="12" fill="#4b4370">
+    <text x="225" y="132">privacy</text><rect x="225" y="140" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="140" width="120" height="7" rx="3.5" fill="#7b6fd0"/>
+    <text x="225" y="172">fairness</text><rect x="225" y="180" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="180" width="102" height="7" rx="3.5" fill="#7b6fd0"/>
+    <text x="225" y="212">transparency</text><rect x="225" y="220" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="220" width="78" height="7" rx="3.5" fill="#7b6fd0"/>
+    <text x="225" y="252">autonomy</text><rect x="225" y="260" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="260" width="58" height="7" rx="3.5" fill="#7b6fd0"/>
+  </g>
+  <path d="M 400 180 L 448 180" stroke="#9aa2aa" stroke-width="3" marker-end="url(#a)"/>
+  <!-- context wall -->
+  <rect x="462" y="90" width="110" height="180" rx="12" fill="#fdf6e6" stroke="#eddfb4" stroke-width="2"/>
+  <text x="517" y="120" font-size="13" font-weight="700" fill="#8a7420" text-anchor="middle">CONTEXTUAL</text>
+  <text x="517" y="137" font-size="13" font-weight="700" fill="#8a7420" text-anchor="middle">CHALLENGES</text>
+  <g fill="#f0e3bd"><rect x="478" y="155" width="78" height="18" rx="5"/><rect x="478" y="181" width="78" height="18" rx="5"/><rect x="478" y="207" width="78" height="18" rx="5"/><rect x="478" y="233" width="78" height="18" rx="5"/></g>
+</svg>

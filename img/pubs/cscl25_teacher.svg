@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" font-family="Inter,-apple-system,Segoe UI,sans-serif">
+  <rect width="600" height="360" fill="#ffffff"/>
+  <!-- concentric rings: teacher center -->
+  <circle cx="300" cy="185" r="150" fill="none" stroke="#dbe6fa" stroke-width="2.5" stroke-dasharray="6 7"/>
+  <circle cx="300" cy="185" r="100" fill="none" stroke="#c9c0ee" stroke-width="2.5" stroke-dasharray="6 7"/>
+  <circle cx="300" cy="185" r="52" fill="#eaf4ee" stroke="#9ccdb0" stroke-width="2.5"/>
+  <circle cx="300" cy="168" r="15" fill="#7bbf98"/>
+  <path d="M 300 183 Q 280 192 280 218 L 320 218 Q 320 192 300 183 Z" fill="#7bbf98"/>
+  <text x="300" y="30" font-size="15" font-weight="700" fill="#3d4a75" text-anchor="middle">TEACHER-CENTERED AI</text>
+  <text x="300" y="250" font-size="12.5" font-weight="700" fill="#3c6e54" text-anchor="middle">TEACHER</text>
+  <!-- ring labels -->
+  <rect x="196" y="96" width="150" height="22" rx="11" fill="#f0edfb"/>
+  <text x="271" y="111" font-size="12" font-weight="700" fill="#4b4370" text-anchor="middle">PEDAGOGICAL VALUES</text>
+  <rect x="380" y="292" width="140" height="22" rx="11" fill="#e9effc"/>
+  <text x="450" y="307" font-size="12" font-weight="700" fill="#3d4a75" text-anchor="middle">CLASSROOM CONTEXT</text>
+  <!-- AI chips orbiting -->
+  <g font-size="11" font-weight="700" fill="#4b4370" text-anchor="middle">
+    <rect x="118" y="216" width="58" height="24" rx="12" fill="#f0edfb" stroke="#c9c0ee"/><text x="147" y="232">AI tool</text>
+    <rect x="428" y="120" width="58" height="24" rx="12" fill="#f0edfb" stroke="#c9c0ee"/><text x="457" y="136">AI tool</text>
+    <rect x="242" y="318" width="58" height="24" rx="12" fill="#f0edfb" stroke="#c9c0ee"/><text x="271" y="334">AI tool</text>
+  </g>
+</svg>
