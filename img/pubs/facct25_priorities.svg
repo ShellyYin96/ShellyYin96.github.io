@@ -1,24 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" font-family="Inter,-apple-system,Segoe UI,sans-serif">
-  <rect width="600" height="360" fill="#ffffff"/>
-  <!-- teacher -->
-  <circle cx="90" cy="150" r="24" fill="#9ccdb0"/>
-  <path d="M 90 174 Q 58 190 58 238 L 122 238 Q 122 190 90 174 Z" fill="#9ccdb0"/>
-  <text x="90" y="268" font-size="14" font-weight="700" fill="#3c6e54" text-anchor="middle">TEACHERS</text>
-  <path d="M 140 190 L 190 190" stroke="#9aa2aa" stroke-width="3" marker-end="url(#a)"/>
-  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9aa2aa"/></marker></defs>
-  <!-- values survey card -->
-  <rect x="205" y="70" width="180" height="220" rx="12" fill="#f0edfb" stroke="#c9c0ee" stroke-width="2"/>
-  <text x="295" y="100" font-size="14" font-weight="700" fill="#4b4370" text-anchor="middle">VALUE ELICITATION</text>
-  <g font-size="12" fill="#4b4370">
-    <text x="225" y="132">privacy</text><rect x="225" y="140" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="140" width="120" height="7" rx="3.5" fill="#7b6fd0"/>
-    <text x="225" y="172">fairness</text><rect x="225" y="180" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="180" width="102" height="7" rx="3.5" fill="#7b6fd0"/>
-    <text x="225" y="212">transparency</text><rect x="225" y="220" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="220" width="78" height="7" rx="3.5" fill="#7b6fd0"/>
-    <text x="225" y="252">autonomy</text><rect x="225" y="260" width="140" height="7" rx="3.5" fill="#e3def5"/><rect x="225" y="260" width="58" height="7" rx="3.5" fill="#7b6fd0"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 430" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="600" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4a4a4a"/></marker>
+  </defs>
+
+  <!-- title block -->
+  <text x="300" y="30" font-size="14" font-weight="800" fill="#333333" text-anchor="middle" letter-spacing="1.5">WHAT DO TEACHERS PRIORITIZE IN RESPONSIBLE AI?</text>
+  <text x="300" y="48" font-size="10.5" fill="#8f8f8f" text-anchor="middle" font-style="italic">a value-elicitation survey with K&#8211;12 teachers</text>
+  <line x1="210" y1="60" x2="390" y2="60" stroke="#e4e4e4" stroke-width="1.4"/>
+
+  <!-- card 1: five RAI principles, ranked -->
+  <g>
+    <rect x="40" y="106" width="230" height="290" rx="10" fill="#e2ede0"/>
+    <rect x="56" y="90" width="198" height="32" rx="4" fill="#202020"/>
+    <text x="155" y="111" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">WHAT TEACHERS PRIORITIZE</text>
+    <g font-size="11" fill="#3c5136">
+      <text x="62" y="152">safety</text>
+      <rect x="62" y="160" width="186" height="10" rx="5" fill="#cfdfcb"/><rect x="62" y="160" width="182" height="10" rx="5" fill="#6f9464"/>
+      <text x="62" y="196">fairness</text>
+      <rect x="62" y="204" width="186" height="10" rx="5" fill="#cfdfcb"/><rect x="62" y="204" width="160" height="10" rx="5" fill="#6f9464"/>
+      <text x="62" y="240">autonomy</text>
+      <rect x="62" y="248" width="186" height="10" rx="5" fill="#cfdfcb"/><rect x="62" y="248" width="138" height="10" rx="5" fill="#6f9464"/>
+      <text x="62" y="284">transparency</text>
+      <rect x="62" y="292" width="186" height="10" rx="5" fill="#cfdfcb"/><rect x="62" y="292" width="116" height="10" rx="5" fill="#6f9464"/>
+      <text x="62" y="328">performance</text>
+      <rect x="62" y="336" width="186" height="10" rx="5" fill="#cfdfcb"/><rect x="62" y="336" width="92" height="10" rx="5" fill="#6f9464"/>
+    </g>
+    <text x="155" y="380" font-size="9.5" fill="#5f7a58" text-anchor="middle" font-style="italic">five Responsible AI principles</text>
   </g>
-  <path d="M 400 180 L 448 180" stroke="#9aa2aa" stroke-width="3" marker-end="url(#a)"/>
-  <!-- context wall -->
-  <rect x="462" y="90" width="110" height="180" rx="12" fill="#fdf6e6" stroke="#eddfb4" stroke-width="2"/>
-  <text x="517" y="120" font-size="13" font-weight="700" fill="#8a7420" text-anchor="middle">CONTEXTUAL</text>
-  <text x="517" y="137" font-size="13" font-weight="700" fill="#8a7420" text-anchor="middle">CHALLENGES</text>
-  <g fill="#f0e3bd"><rect x="478" y="155" width="78" height="18" rx="5"/><rect x="478" y="181" width="78" height="18" rx="5"/><rect x="478" y="207" width="78" height="18" rx="5"/><rect x="478" y="233" width="78" height="18" rx="5"/></g>
+
+  <line x1="282" y1="250" x2="316" y2="250" stroke="#4a4a4a" stroke-width="1.8" marker-end="url(#ah)"/>
+
+  <!-- card 2: contextual challenges -->
+  <g>
+    <rect x="330" y="106" width="230" height="290" rx="10" fill="#faf0c2"/>
+    <rect x="346" y="90" width="198" height="32" rx="4" fill="#202020"/>
+    <text x="445" y="111" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">WHAT GETS IN THE WAY</text>
+    <g font-size="10.5" fill="#5c5220">
+      <circle cx="354" cy="150" r="2" fill="#a8912f"/><text x="364" y="153">limited time and workload</text>
+      <circle cx="354" cy="184" r="2" fill="#a8912f"/><text x="364" y="187">little training or support</text>
+      <circle cx="354" cy="218" r="2" fill="#a8912f"/><text x="364" y="221">school and district policy</text>
+      <circle cx="354" cy="252" r="2" fill="#a8912f"/><text x="364" y="255">opaque AI tools</text>
+      <circle cx="354" cy="286" r="2" fill="#a8912f"/><text x="364" y="289">resource constraints</text>
+    </g>
+    <rect x="350" y="316" width="190" height="56" rx="8" fill="#ffffff"/>
+    <text x="445" y="339" font-size="10" font-weight="700" fill="#5c5220" text-anchor="middle">principles can't be realized</text>
+    <text x="445" y="354" font-size="10" font-weight="700" fill="#5c5220" text-anchor="middle">without addressing context</text>
+  </g>
 </svg>
