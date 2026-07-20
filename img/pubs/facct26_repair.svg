@@ -34,20 +34,20 @@
   <!-- three cards, tight and evenly set -->
   <!-- card 1 -->
   <g>
-    <rect x="24" y="172" width="168" height="232" rx="10" fill="#ffffff" stroke="#c6c6c6" stroke-width="1.6"/>
+    <rect x="24" y="172" width="168" height="232" rx="10" fill="#e0e3e8"/>
     <rect x="38" y="156" width="140" height="34" rx="4" fill="#202020"/>
     <text x="108" y="171" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">ENTANGLED</text>
     <text x="108" y="184" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">VALUES</text>
-    <g font-size="10" fill="#555555">
-      <circle cx="44" cy="212" r="2" fill="#9b9b9b"/>
+    <g font-size="10" fill="#43494f">
+      <circle cx="44" cy="212" r="2" fill="#7d858e"/>
       <text x="54" y="215">AI surveillance vs.</text>
       <text x="54" y="229">accountability, autonomy,</text>
       <text x="54" y="243">and privacy</text>
-      <circle cx="44" cy="270" r="2" fill="#9b9b9b"/>
+      <circle cx="44" cy="270" r="2" fill="#7d858e"/>
       <text x="54" y="273">mandated adoption</text>
       <text x="54" y="287">reshapes autonomy</text>
       <text x="54" y="301">and efficiency</text>
-      <circle cx="44" cy="328" r="2" fill="#9b9b9b"/>
+      <circle cx="44" cy="328" r="2" fill="#7d858e"/>
       <text x="54" y="331">assessment tangles</text>
       <text x="54" y="345">fairness, transparency,</text>
       <text x="54" y="359">and trust</text>
@@ -55,36 +55,36 @@
   </g>
   <!-- card 2 -->
   <g>
-    <rect x="216" y="172" width="168" height="232" rx="10" fill="#ffffff" stroke="#c6c6c6" stroke-width="1.6"/>
+    <rect x="216" y="172" width="168" height="232" rx="10" fill="#faf0c2"/>
     <rect x="226" y="156" width="148" height="34" rx="4" fill="#202020"/>
     <text x="300" y="171" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">INVALID STANDARD</text>
     <text x="300" y="184" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">VALUES &amp; METRICS</text>
-    <g font-size="10" fill="#555555">
-      <circle cx="236" cy="212" r="2" fill="#c9ab4f"/>
+    <g font-size="10" fill="#5c5220">
+      <circle cx="236" cy="212" r="2" fill="#a8912f"/>
       <text x="246" y="215">cultural misreadings in</text>
       <text x="246" y="229">AI engagement models</text>
-      <circle cx="236" cy="256" r="2" fill="#c9ab4f"/>
+      <circle cx="236" cy="256" r="2" fill="#a8912f"/>
       <text x="246" y="259">feedback misaligned with</text>
       <text x="246" y="273">instructional coherence</text>
-      <circle cx="236" cy="300" r="2" fill="#c9ab4f"/>
+      <circle cx="236" cy="300" r="2" fill="#a8912f"/>
       <text x="246" y="303">authentic learning beyond</text>
       <text x="246" y="317">quantifiable metrics</text>
     </g>
   </g>
   <!-- card 3 -->
   <g>
-    <rect x="408" y="172" width="168" height="232" rx="10" fill="#ffffff" stroke="#c6c6c6" stroke-width="1.6"/>
+    <rect x="408" y="172" width="168" height="232" rx="10" fill="#f8d8dd"/>
     <rect x="418" y="156" width="148" height="34" rx="4" fill="#202020"/>
     <text x="492" y="171" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">RELATIONAL</text>
     <text x="492" y="184" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">PEDAGOGICAL VALUES</text>
-    <g font-size="10" fill="#555555">
-      <circle cx="428" cy="212" r="2" fill="#d98d86"/>
+    <g font-size="10" fill="#6e3540">
+      <circle cx="428" cy="212" r="2" fill="#c06a75"/>
       <text x="438" y="215">predictive profiling vs.</text>
       <text x="438" y="229">relational trust</text>
-      <circle cx="428" cy="256" r="2" fill="#d98d86"/>
+      <circle cx="428" cy="256" r="2" fill="#c06a75"/>
       <text x="438" y="259">preserving emotional ties</text>
       <text x="438" y="273">to human oversight</text>
-      <circle cx="428" cy="300" r="2" fill="#d98d86"/>
+      <circle cx="428" cy="300" r="2" fill="#c06a75"/>
       <text x="438" y="303">human intervention for</text>
       <text x="438" y="317">growth-oriented learning</text>
     </g>
