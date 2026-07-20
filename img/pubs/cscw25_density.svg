@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 410" font-family="-apple-system,Segoe UI,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 452" font-family="-apple-system,Segoe UI,sans-serif">
   <rect width="600" height="400" fill="#ffffff"/>
   <defs>
     <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4a4a4a"/></marker>
   </defs>
+
+  <text x="300" y="26" font-size="13.5" font-weight="800" fill="#3a3a3a" text-anchor="middle" letter-spacing="1">DO SYSTEMS NARROW OR WIDEN THE KNOWLEDGE GAP?</text>
+  <text x="300" y="44" font-size="10.5" fill="#8f8f8f" text-anchor="middle" font-style="italic">a triple-difference comparison: dense vs. sparse, before vs. after, tasked vs. untasked places</text>
+  <g transform="translate(0,42)">
 
   <!-- ===== Tasking Manager window (grayscale, thin strokes) ===== -->
   <g>
@@ -60,7 +64,6 @@
   <text x="461" y="192" font-size="10" fill="#8f8f8f" text-anchor="middle" font-style="italic">same tasks, different places</text>
 
   <!-- ===== triple-difference: two panels, compare the gaps ===== -->
-  <text x="300" y="240" font-size="12" font-weight="700" fill="#4a4a4a" text-anchor="middle" letter-spacing="1">TRIPLE-DIFFERENCE: COMPARE THE TWO GAPS</text>
 
   <!-- panel 1: where tasks launched -->
   <g>
@@ -93,4 +96,5 @@
   <circle cx="80" cy="394" r="3.5" fill="#e2938c"/><text x="88" y="397" font-size="9" fill="#6f6f6f">dense</text>
   <circle cx="130" cy="394" r="3.5" fill="#c9c2e6"/><text x="138" y="397" font-size="9" fill="#6f6f6f">sparse</text>
   <text x="430" y="397" font-size="10.5" font-weight="700" fill="#4a4a4a" text-anchor="middle">effect = gap&#8321; &#8722; gap&#8322;</text>
+  </g>
 </svg>
